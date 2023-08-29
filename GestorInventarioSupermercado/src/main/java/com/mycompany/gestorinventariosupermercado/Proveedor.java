@@ -1,25 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.gestorinventariosupermercado;
 
-/**
- *
- * @author mati1
- */
+import java.util.ArrayList;
+
 public class Proveedor {
     private String nombre;
     private String direccion;
     private String informacionContacto;
-    private Producto[] productosSuministrados;
+    private ArrayList<Producto> productosSuministrados;
 
     // Constructor
-    public Proveedor(String nombre, String direccion, String informacionContacto, Producto[] productosSuministrados) {
+    public Proveedor(String nombre, String direccion, String informacionContacto) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.informacionContacto = informacionContacto;
-        this.productosSuministrados = productosSuministrados;
+        this.productosSuministrados = new ArrayList<>();
     }
 
     // Getters
@@ -35,7 +29,7 @@ public class Proveedor {
         return this.informacionContacto;
     }
 
-    public Producto[] getProductosSuministrados() {
+    public ArrayList<Producto> getProductosSuministrados() {
         return this.productosSuministrados;
     }
 
@@ -52,30 +46,17 @@ public class Proveedor {
         this.informacionContacto = informacionContacto;
     }
 
-    public void setProductosSuministrados(Producto[] productosSuministrados) {
-        this.productosSuministrados = productosSuministrados;
-    }
-
-    // Métodos
     public void agregarProducto(Producto producto) {
-        Producto[] productos = new Producto[this.productosSuministrados.length + 1];
-        for (int i = 0; i < this.productosSuministrados.length; i++) {
-            productos[i] = this.productosSuministrados[i];
-        }
-        productos[productos.length - 1] = producto;
-        this.productosSuministrados = productos;
+        this.productosSuministrados.add(producto);
     }
 
     public void eliminarProducto(String codigoBarra) {
-        Producto[] productos = new Producto[this.productosSuministrados.length - 1];
-        int j = 0;
-        for (int i = 0; i < this.productosSuministrados.length; i++) {
-            if (!this.productosSuministrados[i].getCodigoBarra().equals(codigoBarra)) {
-                productos[j] = this.productosSuministrados[i];
-                j++;
+        for (Producto producto : this.productosSuministrados) {
+            if (producto.getCodigoBarra().equals(codigoBarra)) {
+                this.productosSuministrados.remove(producto);
+                break;
             }
         }
-        this.productosSuministrados = productos;
     }
 
     public Producto buscarProducto(String codigoBarra) {
