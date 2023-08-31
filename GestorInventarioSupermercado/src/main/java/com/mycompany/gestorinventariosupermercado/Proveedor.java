@@ -4,15 +4,13 @@ import java.util.ArrayList;
 
 public class Proveedor {
     private String nombre;
-    private String direccion;
-    private String informacionContacto;
+    private String correo; 
     private ArrayList<Producto> productosSuministrados;
 
     // Constructor
-    public Proveedor(String nombre, String direccion, String informacionContacto) {
+    public Proveedor(String nombre, String correo) {
         this.nombre = nombre;
-        this.direccion = direccion;
-        this.informacionContacto = informacionContacto;
+        this.correo = correo;
         this.productosSuministrados = new ArrayList<>();
     }
 
@@ -21,12 +19,8 @@ public class Proveedor {
         return this.nombre;
     }
 
-    public String getDireccion() {
-        return this.direccion;
-    }
-
-    public String getInformacionContacto() {
-        return this.informacionContacto;
+    public String getCorreo() {
+        return this.correo;
     }
 
     public ArrayList<Producto> getProductosSuministrados() {
@@ -38,12 +32,8 @@ public class Proveedor {
         this.nombre = nombre;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public void setInformacionContacto(String informacionContacto) {
-        this.informacionContacto = informacionContacto;
+    public void setCorreo(String correo) {
+        this.correo = correo; 
     }
 
     public void agregarProducto(Producto producto) {
