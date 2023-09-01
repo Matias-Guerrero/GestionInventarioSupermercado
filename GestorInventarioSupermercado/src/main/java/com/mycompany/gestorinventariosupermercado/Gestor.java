@@ -36,7 +36,7 @@ public class Gestor {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
-            if (proveedor.agregarProducto(producto)) {
+            if (proveedor.agregarProductoSuministrado(producto)) {
 
                 // Agrega el producto al HashMap de productos
                 if (this.mapaProductos.containsKey(producto.getNombre())) {
@@ -63,10 +63,10 @@ public class Gestor {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
-            Producto producto = proveedor.buscarProducto(nombreProducto);
+            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto);
             
             if (producto != null) {
-                proveedor.eliminarProducto(nombreProducto);
+                proveedor.eliminarProductoSuministrado(nombreProducto);
 
                 // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
                 Producto productoExistente = this.mapaProductos.get(producto.getNombre());
@@ -99,7 +99,7 @@ public class Gestor {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
-            proveedor.mostrarProductos();
+            proveedor.mostrarProductosSuministrados();
         }
         else {
             System.out.println("No se encontró el proveedor");
