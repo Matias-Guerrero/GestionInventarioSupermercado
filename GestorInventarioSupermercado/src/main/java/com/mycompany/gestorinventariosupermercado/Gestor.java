@@ -10,85 +10,112 @@ public class Gestor {
     // Constructor
     public Gestor() {
         this.proveedores = new ArrayList<Proveedor>(); // Inicializa el ArrayList de proveedores
-        this.mapaProductos = new HashMap<>(); // Inicializa el HashMap de productos
+        this.mapaProductos = new HashMap<String, Producto>(); // Inicializa el HashMap de productos
+    }
+
+    // Getters
+    public ArrayList<Proveedor> getProveedores() {
+        return this.proveedores;
+    }
+
+    public HashMap<String, Producto> getMapaProductos() {
+        return this.mapaProductos;
+    }
+
+    // Setters
+    public void setProveedores(ArrayList<Proveedor> proveedores) {
+        this.proveedores = proveedores;
+    }
+
+    public void setMapaProductos(HashMap<String, Producto> mapaProductos) {
+        this.mapaProductos = mapaProductos;
     }
     
     // Metodos
-    public void agregarProveedor(String nombre, String correo) {
-        Proveedor busquedaProveedor = this.buscarProveedor(nombre);
+    public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) {
+        Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
-        if(busquedaProveedor != null){
-            Proveedor proveedor = new Proveedor(nombre, correo);
-            
-            this.proveedores.add(proveedor);
-            
-            System.out.println("El Proveedor se agrego exitosamente a la base de datos.");
-        }
-        else {
-            System.out.print("El Proveedor ya existe en la base de datos.");
-        }
-    }
-    
-    // Metodo de Sobrecarga
-    public void agregarProveedor(String nombre, String correo, ArrayList<Producto> productos) {
-        Proveedor busquedaProveedor = this.buscarProveedor(nombre);
-
-        if(busquedaProveedor != null){
-            Proveedor proveedor = new Proveedor(nombre, correo);
-            
-            this.proveedores.add(proveedor);
-            
-            System.out.println("El Proveedor se agrego exitosamente a la base de datos.");
-
-            // Actualiza el HashMap de productos con los productos del nuevo proveedor y si ya existen, actualiza el stock
-            for (Producto producto : productos) {
-                Producto busquedaProducto = this.mapaProductos.get(producto.getCodigoBarra());
-                if (busquedaProducto != null) {
-                    busquedaProducto.actualizarStock(producto.getCantidadStock(), true);
-                }
-                else {
-                    this.mapaProductos.put(producto.getCodigoBarra(), producto);
-                }
-            }
-        }
-        else {
-            System.out.print("El Proveedor ya existe en la base de datos.");
-        }
-    }
-
-    public Proveedor eliminarProveedor(String nombre) {
-        Proveedor proveedor = this.buscarProveedor(nombre);
-
         if (proveedor != null) {
-            this.proveedores.remove(proveedor);
+            if (proveedor.agregarProducto(producto)) {
 
-            // Elimina los productos del proveedor del HashMap de productos y actualiza el stock, si el producto llega a 0, lo elimina del HashMap
-            for (Producto producto : proveedor.getProductosSuministrados()) {
-                Producto busquedaProducto = this.mapaProductos.get(producto.getCodigoBarra());
-                
-                if (busquedaProducto != null) {
-                    busquedaProducto.actualizarStock(producto.getCantidadStock(), false);
+                // Agrega el producto al HashMap de productos
+                if (this.mapaProductos.containsKey(producto.getNombre())) {
+                    // Se obtiene el codigo de barra del producto que ya existe
+                    producto.setCodigoBarra(this.mapaProductos.get(producto.getNombre()).getCodigoBarra());
                     
-                    if (busquedaProducto.getCantidadStock() == 0) {
-                        this.mapaProductos.remove(producto.getCodigoBarra());
-                    }
+                    // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
+                    Producto productoExistente = this.mapaProductos.get(producto.getNombre());
+                    productoExistente.actualizarStock(producto.getCantidadStock(), true);
+
+                } else {
+                    producto.setCodigoBarra(Producto.generarCodigoBarra());
+                    this.mapaProductos.put(producto.getNombre(), producto);
                 }
+
+                return true;
             }
-
-            return proveedor;
         }
+        
+        return false;
+    }
 
+    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar){
+        Proveedor proveedor = this.buscarProveedor(nombreProveedor);
+        
+        if (proveedor != null) {
+            Producto producto = proveedor.buscarProducto(nombreProducto);
+            
+            if (producto != null) {
+                proveedor.eliminarProducto(nombreProducto);
+
+                // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
+                Producto productoExistente = this.mapaProductos.get(producto.getNombre());
+                productoExistente.actualizarStock(cantidadEliminar, false);
+
+                // Si el producto se queda sin stock, se elimina del HashMap
+                if (productoExistente.getCantidadStock() == 0) {
+                    this.mapaProductos.remove(producto.getNombre());
+                }
+
+                return producto;
+            }
+        }
+        
         return null;
     }
     
-    public Proveedor buscarProveedor(String nombre) {
+    public Proveedor buscarProveedor(String nombreProveedor) {
         
         for (Proveedor proveedor : this.proveedores) {
-            if (proveedor.getNombre().equals(nombre)) {
+            if (proveedor.getNombre().equals(nombreProveedor)) {
                 return proveedor;
             }
         }
         
         return null;
+    }
+
+    public void mostrarProductosSuministrados(String nombreProveedor) {
+        Proveedor proveedor = this.buscarProveedor(nombreProveedor);
+        
+        if (proveedor != null) {
+            proveedor.mostrarProductos();
+        }
+        else {
+            System.out.println("No se encontró el proveedor");
+        }
+    }
+
+    public void mostrarProductosStock() {
+        System.out.println("Listado de Productos en Stock");
+        System.out.println("=============================");
+
+        // Se muestran los productos y su stock por columnas
+        System.out.printf("%-20s %-20s %-20s %-20s\n", "Nombre", "Codigo de Barra", "Precio", "Cantidad en Stock");
+        System.out.printf("%-20s %-20s %-20s %-20s\n", "======", "===============", "======", "=================");
+
+        for (Producto producto : this.mapaProductos.values()) {
+            System.out.printf("%-20s %-20s %-20s %-20s\n", producto.getNombre(), producto.getCodigoBarra(), producto.getPrecio(), producto.getCantidadStock());
+        }
     }
 }
