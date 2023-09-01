@@ -134,6 +134,39 @@ public class GestorInventarioSupermercado {
                     // ================================
                     // Eliminar Proveedor a Proveedor
                     // ================================
+                    
+                    // Se solicita el nombre del proveedor
+                    System.out.println("Ingrese el nombre del proveedor: ");
+                    nombreProveedor = lector.readLine();
+
+                    // Se solicita el nombre del producto
+                    System.out.println("Ingrese el nombre del producto: ");
+                    nombreProducto = lector.readLine();
+
+                    // Se verifica cuanto stock tiene el producto en el proveedor
+                    Proveedor proveedor = gestor.buscarProveedor(nombreProveedor);
+                    Producto productoExistente = proveedor.buscarProductoSuministrado(nombreProducto);
+                    int stockActual = productoExistente.getCantidadStock();
+
+                    // Se solicita la cantidad a eliminar dependiendo del stock actual
+                    System.out.println("Ingrese la cantidad a eliminar (Stock actual: " + stockActual + "): ");
+                    int cantidadEliminar = Integer.parseInt(lector.readLine());
+
+                    // Se verifica que la cantidad a eliminar no sea mayor al stock actual
+                    if (cantidadEliminar > stockActual) {
+                        System.out.println("La cantidad a eliminar no puede ser mayor al stock actual.");
+                        break;
+                    }
+
+                    // Se elimina el producto del proveedor
+                    Producto productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
+
+                    // Se verifica si el producto fue eliminado
+                    if (productoEliminado != null) {
+                        System.out.println("Producto eliminado con éxito.");
+                    } else {
+                        System.out.println("No se pudo eliminar el producto.");
+                    }
 
                     break;
                 case 3:
