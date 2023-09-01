@@ -16,6 +16,7 @@ public class Producto {
         this.nombreProducto = nombreProducto;
         this.precio = precio;
         this.cantidadStock = cantidadStock;
+        this.codigoBarra = Producto.generarCodigoBarra();
     }
 
     // Getters

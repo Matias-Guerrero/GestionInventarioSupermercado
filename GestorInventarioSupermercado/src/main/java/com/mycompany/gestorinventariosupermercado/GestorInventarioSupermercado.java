@@ -173,13 +173,63 @@ public class GestorInventarioSupermercado {
                     // ================================
                     // Buscar Producto de Proveedor
                     // ================================
+                    
+                    // Se solicita el nombre del proveedor
+                    System.out.println("Ingrese el nombre del proveedor: ");
+                    nombreProveedor = lector.readLine();
 
+                    // Se comprueba que el proveedor exista
+                    proveedor = gestor.buscarProveedor(nombreProveedor);
+
+                    if (proveedor == null) {
+                        System.out.println("No se encontró el proveedor.");
+                        break;
+                    }
+
+                    // Se solicita el nombre del producto
+                    System.out.println("Ingrese el nombre del producto: ");
+                    nombreProducto = lector.readLine();
+
+                    // Se busca el producto en el proveedor
+                    Producto productoBuscado = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
+
+                    if (productoBuscado == null) {
+                        System.out.println("No se encontró el producto.");
+                        break;
+                    }
+
+                    System.out.println("========================================");
+                    System.out.println("Producto encontrado.");
+                    System.out.println("========================================");
+
+                    // Se muestra el producto
+                    System.out.println("Nombre: " + productoBuscado.getNombre());
+                    System.out.println("Codigo de Barra: " + productoBuscado.getCodigoBarra());
+                    System.out.println("Precio: " + productoBuscado.getPrecio());
+                    System.out.println("Cantidad en Stock: " + productoBuscado.getCantidadStock());
+                    System.out.println("========================================");
+                    
                     break;
                 case 4:
                     // ========================================
                     // Mostrar Lista de Productos del Proveedor
                     // ========================================
+                    
+                    // Se solicita el nombre del proveedor
+                    System.out.println("Ingrese el nombre del proveedor: ");
+                    nombreProveedor = lector.readLine();
 
+                    // Se comprueba que el proveedor exista
+                    proveedor = gestor.buscarProveedor(nombreProveedor);
+
+                    if (proveedor == null) {
+                        System.out.println("No se encontró el proveedor.");
+                        break;
+                    }
+
+                    // Se muestran los productos del proveedor
+                    gestor.mostrarProductosSuministrados(nombreProveedor);
+                    
                     break;
                 case 5:
                     // ========================================
