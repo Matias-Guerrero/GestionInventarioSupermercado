@@ -3,24 +3,24 @@ package com.mycompany.gestorinventariosupermercado;
 import java.util.ArrayList;
 
 public class Proveedor {
-    private String nombre;
-    private String correo; 
+    private String nombreProveedor;
+    private String correoElectronico;
     private ArrayList<Producto> productosSuministrados;
 
     // Constructor
-    public Proveedor(String nombre, String correo) {
-        this.nombre = nombre;
-        this.correo = correo;
+    public Proveedor(String nombreProveedor, String correoElectronico) {
+        this.nombreProveedor = nombreProveedor;
+        this.correoElectronico = correoElectronico;
         this.productosSuministrados = new ArrayList<>();
     }
 
     // Getters
     public String getNombre() {
-        return this.nombre;
+        return this.nombreProveedor;
     }
 
-    public String getCorreo() {
-        return this.correo;
+    public String getCorreoElectronico() {
+        return this.correoElectronico;
     }
 
     public ArrayList<Producto> getProductosSuministrados() {
@@ -29,32 +29,69 @@ public class Proveedor {
 
     // Setters
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombreProveedor = nombre;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo; 
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
-    public void agregarProducto(Producto producto) {
-        this.productosSuministrados.add(producto);
+    public void setProductosSuministrados(ArrayList<Producto> productosSuministrados) {
+        this.productosSuministrados = productosSuministrados;
     }
 
-    public void eliminarProducto(String codigoBarra) {
-        for (Producto producto : this.productosSuministrados) {
-            if (producto.getCodigoBarra().equals(codigoBarra)) {
-                this.productosSuministrados.remove(producto);
-                break;
-            }
+    // Metodos
+
+    public boolean agregarProductoSuministrado(Producto producto) {
+        if (this.buscarProductoSuministrado(producto.getNombre()) == null) {
+            this.productosSuministrados.add(producto);
+            return true;
         }
+
+        return false;
     }
 
-    public Producto buscarProducto(String codigoBarra) {
+    public Producto eliminarProductoSuministrado(String nombreProducto) {
+        Producto producto = this.buscarProductoSuministrado(nombreProducto);
+
+        if (producto != null) {
+            this.productosSuministrados.remove(producto);
+        }
+
+        return producto;
+    }
+
+    public Producto buscarProductoSuministrado(String nombreProducto) {
         for (Producto producto : this.productosSuministrados) {
-            if (producto.getCodigoBarra().equals(codigoBarra)) {
+            if (producto.getNombre().equals(nombreProducto)) {
                 return producto;
             }
         }
+
         return null;
+    }
+
+    // Sobrecarga del metodo
+    public Producto buscarProductoSuministrado(String nombreProducto, String nombreProveedor){
+        for (Producto producto : this.productosSuministrados) {
+            if (producto.getNombre().equals(nombreProducto) && this.nombreProveedor.equals(nombreProveedor)) {
+                return producto;
+            }
+        }
+
+        return null;
+    }
+
+    public void mostrarProductosSuministrados(){
+        System.out.println("Productos suministrados por " + this.nombreProveedor + ":");
+        System.out.println("========================================");
+
+        for (Producto producto : this.productosSuministrados) {
+            System.out.println("Nombre: " + producto.getNombre());
+            System.out.println("Codigo de Barra: " + producto.getCodigoBarra());
+            System.out.println("Precio: " + producto.getPrecio());
+            System.out.println("Cantidad en Stock: " + producto.getCantidadStock());
+            System.out.println("========================================");
+        }
     }
 }
