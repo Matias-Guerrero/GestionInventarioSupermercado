@@ -37,16 +37,16 @@ public class GestorInventarioSupermercado {
         
         do {
             limpiarPantalla();
-            System.out.println("=============================================");
-            System.out.println("Sistema de Gestion de Proveedores y Productos");
-            System.out.println("=============================================");
-            System.out.println("1) Agregar Proveedor");
-            System.out.println("2) Eliminar Proveedor");
-            System.out.println("3) Buscar Proveedor");
+            System.out.println("=============================================================");
+            System.out.println("Sistema de Gestion de Productos suministrados por Proveedores");
+            System.out.println("=============================================================");
+            System.out.println("1) Agregar Producto en Proveedor");
+            System.out.println("2) Eliminar Producto en Proveedor");
+            System.out.println("3) Buscar Producto en Proveedor");
             System.out.println("4) Lista de Productos del Proveedor");
             System.out.println("5) Mostrar Productos y su stock");
             System.out.println("6) Salir");
-            System.out.println("=============================================");
+            System.out.println("=============================================================");
             System.out.print("Opción: ");
 
             opcion = Integer.parseInt(lector.readLine());
