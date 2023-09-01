@@ -12,9 +12,8 @@ public class Producto {
     private int cantidadStock;
   
     // Constructor
-    public Producto(String nombreProducto, String codigoBarra,double precio, int cantidadStock) {
+    public Producto(String nombreProducto,double precio, int cantidadStock) {
         this.nombreProducto = nombreProducto;
-        this.codigoBarra = codigoBarra;
         this.precio = precio;
         this.cantidadStock = cantidadStock;
     }
@@ -53,6 +52,18 @@ public class Producto {
         this.cantidadStock = cantidadStock;
     }
 
+    // Métodos
+
+    // Método para generar un codigo de barra aleatorio
+    public static String generarCodigoBarra() {
+        String codigoBarra = "";
+
+        for (int i = 0; i < 13; i++) {
+            codigoBarra += (int) (Math.random() * 10);
+        }
+
+        return codigoBarra;
+    }
 
     // Métodos de sobrecarga
 
