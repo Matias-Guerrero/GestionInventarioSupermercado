@@ -105,6 +105,29 @@ public class GestorInventarioSupermercado {
                     // ================================
                     // Agregar Producto a Proveedor
                     // ================================
+                    // Se solicita el nombre del proveedor
+                    System.out.println("Ingrese el nombre del proveedor: ");
+                    String nombreProveedor = lector.readLine();
+
+                    // Se solicita el nombre del producto y sus datos
+                    System.out.println("Ingrese el nombre del producto: ");
+                    String nombreProducto = lector.readLine();
+
+                    System.out.println("Ingrese el precio del producto: ");
+                    double precio = Double.parseDouble(lector.readLine());
+
+                    System.out.println("Ingrese la cantidad en stock del producto: ");
+                    int cantidadStock = Integer.parseInt(lector.readLine());
+
+                    // Se crea el producto
+                    Producto producto = new Producto(nombreProducto, precio, cantidadStock);
+
+                    // Se agrega el producto al proveedor
+                    if (gestor.agregarProductoAProveedor(nombreProveedor, producto)) {
+                        System.out.println("Producto agregado con éxito.");
+                    } else {
+                        System.out.println("No se pudo agregar el producto.");
+                    }
 
                     break;
                 case 2:
@@ -130,6 +153,8 @@ public class GestorInventarioSupermercado {
                     // Mostrar Productos y su Stock
                     // ========================================
                     
+                    // Se muestran los productos y su stock
+                    gestor.mostrarProductosStock();
                     break;
                 case 6:
                     // ========================================
