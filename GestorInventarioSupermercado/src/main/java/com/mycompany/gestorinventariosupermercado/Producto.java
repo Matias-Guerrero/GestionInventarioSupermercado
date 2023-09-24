@@ -1,10 +1,5 @@
 package com.mycompany.gestorinventariosupermercado;
 
-/**
- *
- * @author mati1
- */
-
 public class Producto {
     private String nombreProducto;
     private String codigoBarra;
