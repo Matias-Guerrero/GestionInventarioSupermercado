@@ -48,7 +48,8 @@ public class GestorInventarioSupermercado {
             System.out.println("3) Buscar Producto de Proveedor");
             System.out.println("4) Lista de Productos de Proveedor");
             System.out.println("5) Mostrar Productos y su stock");
-            System.out.println("6) Salir");
+            System.out.println("6) Editar Producto a Proveedor");
+            System.out.println("7) Salir");
             System.out.println("=============================================================");
             System.out.print("Opción: ");
 
@@ -194,6 +195,49 @@ public class GestorInventarioSupermercado {
                     gestor.mostrarProductosStock();
                     break;
                 case 6:
+                    // ================================
+                    // Editar Producto de Proveedor
+                    // ================================
+
+                    // Se solicita el nombre del proveedor
+                    System.out.println("Ingrese el nombre del proveedor: ");
+                    nombreProveedor = lector.readLine();
+
+                    // Se comprueba que el proveedor exista
+                    proveedor = gestor.buscarProveedor(nombreProveedor);
+
+                    if (proveedor == null) {
+                        System.out.println("No se encontró el proveedor.");
+                        break;
+                    }
+
+                    // Se solicita el nombre del producto
+                    System.out.println("Ingrese el nombre del producto: ");
+                    nombreProducto = lector.readLine();
+
+                    // Se busca el producto en el proveedor
+                    Producto productoEditar = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
+
+                    if (productoEditar == null) {
+                        System.out.println("No se encontró el producto.");
+                        break;
+                    }
+
+                    // Se solicitan los nuevos datos para el producto
+                    System.out.println("Ingrese el nuevo nombre del producto: ");
+                    String nuevoNombre = lector.readLine();
+
+                    System.out.println("Ingrese el nuevo precio del producto: ");
+                    double nuevoPrecio = Double.parseDouble(lector.readLine());
+
+                    System.out.println("Ingrese la nueva cantidad en stock del producto: ");
+                    int nuevaCantidadStock = Integer.parseInt(lector.readLine());
+
+                    // Se modifica el producto
+                    proveedor.modificarProductoSuministrado(nombreProducto, nuevoNombre, nuevoPrecio, nuevaCantidadStock);
+                    System.out.println("Producto modificado con éxito.");
+                    break;
+                case 7:
                     // ========================================
                     // Salir
                     // ========================================

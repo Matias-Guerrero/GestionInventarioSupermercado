@@ -94,4 +94,15 @@ public class Proveedor {
             System.out.println("========================================");
         }
     }
+    
+    public boolean modificarProductoSuministrado(String nombreProducto, String nuevoNombre, double nuevoPrecio, int nuevaCantidadStock) {
+        Producto producto = buscarProductoSuministrado(nombreProducto);
+
+        if (producto != null) {
+            producto.modificarProducto(nuevoNombre, nuevoPrecio, nuevaCantidadStock);
+            return true;
+        }
+
+        return false;
+    }
 }

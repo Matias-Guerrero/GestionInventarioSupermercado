@@ -75,4 +75,10 @@ public class Producto {
             this.cantidadStock -= nuevaCantidad;
         }
     }
+    
+    public void modificarProducto(String nombre, double precio, int cantidadStock) {
+        this.nombreProducto = nombre;
+        this.precio = precio;
+        this.cantidadStock = cantidadStock;
+    }
 }
