@@ -120,10 +120,21 @@ public class VentanaBienvenida extends javax.swing.JFrame {
 
     private void BtnMenuProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuProveedorActionPerformed
         // TODO add your handling code here:
+        
+        VentanaProveedor newVproveedor = new VentanaProveedor();
+        
+        newVproveedor.setVisible(true);
+        
+        this.dispose();
+        
     }//GEN-LAST:event_BtnMenuProveedorActionPerformed
 
     private void BtnMenuProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuProductoActionPerformed
         // TODO add your handling code here:
+        
+        VentanaProducto newVproducto = new VentanaProducto(); 
+        newVproducto.setVisible(true); 
+        this.dispose(); 
     }//GEN-LAST:event_BtnMenuProductoActionPerformed
 
     /**

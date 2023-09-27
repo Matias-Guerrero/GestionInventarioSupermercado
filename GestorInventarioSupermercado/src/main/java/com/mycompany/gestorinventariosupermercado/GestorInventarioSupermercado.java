@@ -1,6 +1,7 @@
 package com.mycompany.gestorinventariosupermercado;
 
 import java.io.*;
+import frontend.*; 
 
 public class GestorInventarioSupermercado {
     // Metodos Auxiliares
@@ -32,6 +33,14 @@ public class GestorInventarioSupermercado {
     public static void main(String[] args) throws IOException, NumberFormatException {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         Gestor gestor = new Gestor(); // Crea una instancia del Gestor
+        
+        // Se crea la instancia de ventana
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                VentanaBienvenida ventana = new VentanaBienvenida();
+                ventana.setVisible(true);
+            }
+        });
 
         // Cargar datos iniciales
         gestor.cargarDatosDesdeArchivo("datos.txt");
