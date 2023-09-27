@@ -1,6 +1,7 @@
 package com.mycompany.gestorinventariosupermercado;
 
 import java.util.ArrayList;
+import java.util.Currency;
 
 public class Proveedor {
     private String nombreProveedor;
@@ -104,5 +105,53 @@ public class Proveedor {
         }
 
         return false;
+    }
+}
+
+// Subclases de Proveedor
+
+class ProveedorLocal extends Proveedor {
+    private String region;
+
+    public ProveedorLocal(String nombreProveedor, String correoElectronico, String region) {
+        super(nombreProveedor, correoElectronico);
+        this.region = region;
+    }
+    
+    @Override
+    public void mostrarProductosSuministrados() {
+        super.mostrarProductosSuministrados(); // Llama al método de la superclase
+        System.out.println("Región: " + region);
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+}
+
+class ProveedorInternacional extends Proveedor {
+    private String pais;
+
+    public ProveedorInternacional(String nombreProveedor, String correoElectronico, String pais) {
+        super(nombreProveedor, correoElectronico);
+        this.pais = pais;
+    }
+    
+    @Override
+    public void mostrarProductosSuministrados() {
+        super.mostrarProductosSuministrados(); // Llama al método de la superclase
+        System.out.println("Pais: " + pais);
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
     }
 }
