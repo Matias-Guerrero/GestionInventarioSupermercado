@@ -81,4 +81,11 @@ public class Producto {
         this.precio = precio;
         this.cantidadStock = cantidadStock;
     }
+    
+    public String obtenerInformacion(){
+        return "Nombre: " + this.nombreProducto +
+               "\nCodigo de Barras: " + this.codigoBarra +
+               "\nPrecio: " + this.precio +
+               "\nCantidad en Stock: " + this.cantidadStock;
+    }
 }

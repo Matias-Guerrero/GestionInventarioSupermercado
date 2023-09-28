@@ -190,4 +190,17 @@ public class Gestor {
             e.printStackTrace();
         }
     }
+    
+    public ArrayList<Producto> filtrarProductosPorStock(int stockMinimo, int stockMaximo) {
+        ArrayList<Producto> productosFiltrados = new ArrayList<>();
+
+        for (Producto producto : mapaProductos.values()) {
+            int cantidadStock = producto.getCantidadStock();
+            if (cantidadStock >= stockMinimo && cantidadStock <= stockMaximo) {
+                productosFiltrados.add(producto);
+            }
+        }
+
+        return productosFiltrados;
+    }
 }

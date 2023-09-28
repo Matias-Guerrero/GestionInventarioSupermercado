@@ -5,6 +5,7 @@
 package gestorsupermercadoinventario;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -63,7 +64,8 @@ public class GestorSupermercadoInventario {
             System.out.println("4) Lista de Productos de Proveedor");
             System.out.println("5) Mostrar Productos y su stock");
             System.out.println("6) Editar Producto a Proveedor");
-            System.out.println("7) Salir");
+            System.out.println("7) Filtrar Productos por Stock");
+            System.out.println("8) Salir");
             System.out.println("=============================================================");
             System.out.print("Opcion: ");
 
@@ -252,6 +254,36 @@ public class GestorSupermercadoInventario {
                     System.out.println("Producto modificado con éxito.");
                     break;
                 case 7:
+                    // ========================================
+                    // Filtar por cantidad de Stock
+                    // ========================================  
+                    
+                    // Solicitar la cantidad mínima y máxima
+                    System.out.println("Ingrese la cantidad minima de stock: ");
+                    int stockMinimo = Integer.parseInt(lector.readLine());
+                    
+                    System.out.println("Ingrese la cantidad maxima de stock: ");
+                    int stockMaximo = Integer.parseInt(lector.readLine());
+                    
+                    // Se filtran los productos 
+                    ArrayList<Producto> productosFiltrados = gestor.filtrarProductosPorStock(stockMinimo, stockMaximo);
+                    
+                    if(productosFiltrados.isEmpty() == true){
+                        System.out.println("No hay Productos con Stock entre " + stockMinimo + " y " + stockMaximo + ":");  
+                    }
+                    else{
+                        //Se muestran los productos filtrados
+                        System.out.println("Productos con Stock entre " + stockMinimo + " y " + stockMaximo + ":");
+
+                        for(Producto productoActual: productosFiltrados){
+                            System.out.println(productoActual.obtenerInformacion());
+                        }
+                    }
+                    
+                    
+                   
+                    break;
+                case 8:
                     // ========================================
                     // Salir
                     // ========================================
