@@ -1,19 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package gestorsupermercadoinventario;
 
 import java.io.*;
 import java.util.ArrayList;
 
 /**
+ * Clase principal que representa el sistema de gestión de productos suministrados por proveedores.
+ * Esta clase contiene el método principal `main` que inicia la aplicación.
  *
- * @author mati1
  */
 public class GestorSupermercadoInventario {
     
     // Metodos Auxiliares
+    
+    /**
+     * Limpia la pantalla de la consola según el sistema operativo.
+     */
     public static void limpiarPantalla() {
         try {
             final String os = System.getProperty("os.name");
@@ -28,7 +29,10 @@ public class GestorSupermercadoInventario {
         catch (final IOException e) {  
         }
     }
-
+    
+    /**
+     * Pausa la ejecución del programa y espera que el usuario presione ENTER.
+     */
     public static void pausar() {
         System.out.println("Presione ENTER para continuar...");
         try {
@@ -38,7 +42,9 @@ public class GestorSupermercadoInventario {
     }
 
     /**
-     * @param args the command line arguments
+     * Método principal de la aplicación que inicia la interfaz de usuario y maneja las operaciones.
+     * @param args Argumentos de línea de comandos (no utilizados en este caso).
+     * @throws IOException Excepción de E/S en caso de errores.
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here

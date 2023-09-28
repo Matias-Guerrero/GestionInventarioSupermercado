@@ -4,17 +4,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
 
+/**
+ * Clase que representa un gestor para administrar proveedores y productos en un supermercado.
+ */
 public class Gestor {
     private ArrayList proveedores;
     private HashMap<String, Producto> mapaProductos;
 
-    // Constructor
+    /**
+     * Constructor de la clase Gestor.
+     * Inicializa el ArrayList de proveedores y el HashMap de productos.
+     */
     public Gestor() {
         this.proveedores = new ArrayList(); // Inicializa el ArrayList de proveedores
         this.mapaProductos = new HashMap<String, Producto>(); // Inicializa el HashMap de productos
     }
     
     // Metodos
+    /**
+     * Agrega un producto a un proveedor existente.
+     *
+     * @param nombreProveedor Nombre del proveedor.
+     * @param producto        Producto a agregar.
+     * @return True si se agrega con éxito, False en caso contrario.
+     */
     public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
@@ -42,7 +55,15 @@ public class Gestor {
         
         return false;
     }
-
+    
+    /**
+     * Elimina un producto de un proveedor.
+     *
+     * @param nombreProveedor  Nombre del proveedor.
+     * @param nombreProducto   Nombre del producto a eliminar.
+     * @param cantidadEliminar Cantidad del producto a eliminar.
+     * @return Producto eliminado o null si no se encuentra.
+     */
     public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar){
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
@@ -68,6 +89,12 @@ public class Gestor {
         return null;
     }
     
+    /**
+     * Busca un proveedor por nombre.
+     *
+     * @param nombreProveedor Nombre del proveedor a buscar.
+     * @return Proveedor encontrado o null si no se encuentra.
+     */
     public Proveedor buscarProveedor(String nombreProveedor) {
         for (Object proveedorObj : this.proveedores) {
             if (proveedorObj instanceof Proveedor) {
@@ -79,7 +106,12 @@ public class Gestor {
         }
         return null;
     }
-
+    
+    /**
+     * Muestra la lista de productos suministrados por un proveedor.
+     *
+     * @param nombreProveedor Nombre del proveedor.
+     */
     public void mostrarProductosSuministrados(String nombreProveedor) {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
@@ -90,7 +122,10 @@ public class Gestor {
             System.out.println("No se encontró el proveedor");
         }
     }
-
+    
+    /**
+     * Muestra la lista de productos y su stock.
+     */
     public void mostrarProductosStock() {
         System.out.println("Listado de Productos en Stock");
         System.out.println("=============================");
@@ -104,6 +139,11 @@ public class Gestor {
         }
     }
     
+    /**
+     * Carga datos desde un archivo en el formato especificado.
+     *
+     * @param nombreArchivo Nombre del archivo desde donde cargar datos.
+     */
     public void cargarDatosDesdeArchivo(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
@@ -159,6 +199,11 @@ public class Gestor {
         }
     }
     
+    /**
+     * Guarda datos en un archivo en el formato especificado.
+     *
+     * @param nombreArchivo Nombre del archivo donde guardar datos.
+     */
     public void guardarDatosEnArchivo(String nombreArchivo) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
             for (Object proveedorObj : proveedores) {
@@ -191,6 +236,13 @@ public class Gestor {
         }
     }
     
+    /**
+     * Filtra productos por rango de stock.
+     *
+     * @param stockMinimo Stock mínimo.
+     * @param stockMaximo Stock máximo.
+     * @return Lista de productos filtrados.
+     */
     public ArrayList<Producto> filtrarProductosPorStock(int stockMinimo, int stockMaximo) {
         ArrayList<Producto> productosFiltrados = new ArrayList<>();
 
