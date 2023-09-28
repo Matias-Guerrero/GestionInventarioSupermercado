@@ -13,24 +13,6 @@ public class Gestor {
         this.proveedores = new ArrayList(); // Inicializa el ArrayList de proveedores
         this.mapaProductos = new HashMap<String, Producto>(); // Inicializa el HashMap de productos
     }
-
-    // Getters
-    public ArrayList getProveedores() {
-        return this.proveedores;
-    }
-
-    public HashMap<String, Producto> getMapaProductos() {
-        return this.mapaProductos;
-    }
-
-    // Setters
-    public void setProveedores(ArrayList proveedores) {
-        this.proveedores = proveedores;
-    }
-
-    public void setMapaProductos(HashMap<String, Producto> mapaProductos) {
-        this.mapaProductos = mapaProductos;
-    }
     
     // Metodos
     public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) {
@@ -65,7 +47,7 @@ public class Gestor {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
-            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto);
+            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
             
             if (producto != null) {
                 proveedor.eliminarProductoSuministrado(nombreProducto);
