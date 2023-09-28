@@ -1,4 +1,4 @@
-package com.mycompany.gestorinventariosupermercado;
+package gestorsupermercadoinventario;
 
 public class Producto {
     private String nombreProducto;

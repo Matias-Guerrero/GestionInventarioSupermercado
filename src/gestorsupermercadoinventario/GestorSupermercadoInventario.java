@@ -1,8 +1,17 @@
-package com.mycompany.gestorinventariosupermercado;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package gestorsupermercadoinventario;
 
 import java.io.*;
 
-public class GestorInventarioSupermercado {
+/**
+ *
+ * @author mati1
+ */
+public class GestorSupermercadoInventario {
+    
     // Metodos Auxiliares
     public static void limpiarPantalla() {
         try {
@@ -15,8 +24,7 @@ public class GestorInventarioSupermercado {
               Runtime.getRuntime().exec("clear");  
             } 
         }  
-        catch (final Exception e) {  
-          e.printStackTrace();  
+        catch (final IOException e) {  
         }
     }
 
@@ -24,12 +32,18 @@ public class GestorInventarioSupermercado {
         System.out.println("Presione ENTER para continuar...");
         try {
             System.in.read();
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException e) {
         }
     }
 
-    public static void main(String[] args) throws IOException, NumberFormatException {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws IOException {
+        // TODO code application logic here
+        VentanaInicio ventana = new VentanaInicio();
+        ventana.setVisible(true);
+        
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         Gestor gestor = new Gestor(); // Crea una instancia del Gestor
 
@@ -51,7 +65,7 @@ public class GestorInventarioSupermercado {
             System.out.println("6) Editar Producto a Proveedor");
             System.out.println("7) Salir");
             System.out.println("=============================================================");
-            System.out.print("Opción: ");
+            System.out.print("Opcion: ");
 
             opcion = Integer.parseInt(lector.readLine());
 
@@ -253,7 +267,7 @@ public class GestorInventarioSupermercado {
 
                     System.exit(0);
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opcion inválida.");
                     break;
             }
 
@@ -263,4 +277,5 @@ public class GestorInventarioSupermercado {
             lector.readLine();
         }
     }
+    
 }

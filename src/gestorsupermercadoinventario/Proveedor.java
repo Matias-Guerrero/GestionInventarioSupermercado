@@ -1,4 +1,4 @@
-package com.mycompany.gestorinventariosupermercado;
+package gestorsupermercadoinventario;
 
 import java.util.ArrayList;
 import java.util.Currency;
