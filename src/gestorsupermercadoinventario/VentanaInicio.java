@@ -28,6 +28,8 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         msjBienvenida = new javax.swing.JLabel();
         btnMenuProveedor = new javax.swing.JButton();
+        btnMenuProducto = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
         imgSupermarket = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,14 +39,33 @@ public class VentanaInicio extends javax.swing.JFrame {
         msjBienvenida.setText("Bienvenid@ al gestor de inventario de supermecado");
         getContentPane().add(msjBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 30));
 
-        btnMenuProveedor.setFont(new java.awt.Font("Noteworthy", 0, 16)); // NOI18N
-        btnMenuProveedor.setText("Ir a Menú");
+        btnMenuProveedor.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
+        btnMenuProveedor.setText("Menú Proveedor");
         btnMenuProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuProveedorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenuProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 140, 40));
+        getContentPane().add(btnMenuProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 150, 40));
+
+        btnMenuProducto.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
+        btnMenuProducto.setText("Menú Producto");
+        btnMenuProducto.setPreferredSize(new java.awt.Dimension(145, 35));
+        btnMenuProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuProductoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMenuProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 140, 40));
+
+        exit.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        exit.setText("Salir");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 90, 30));
 
         imgSupermarket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supermarket.png"))); // NOI18N
         getContentPane().add(imgSupermarket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
@@ -58,6 +79,19 @@ public class VentanaInicio extends javax.swing.JFrame {
         newVproveedor.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuProveedorActionPerformed
+
+    private void btnMenuProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProductoActionPerformed
+        // TODO add your handling code here:
+        VentanaProducto newVproducto = new VentanaProducto(); 
+        newVproducto.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMenuProductoActionPerformed
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        // TODO add your handling code here:
+        // Cerrar la aplicación completa
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -95,7 +129,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMenuProducto;
     private javax.swing.JButton btnMenuProveedor;
+    private javax.swing.JButton exit;
     private javax.swing.JLabel imgSupermarket;
     private javax.swing.JLabel msjBienvenida;
     // End of variables declaration//GEN-END:variables

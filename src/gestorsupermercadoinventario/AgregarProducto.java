@@ -26,21 +26,86 @@ public class AgregarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logo = new javax.swing.JLabel();
+        msjTitulo = new javax.swing.JLabel();
+        nombreProveedor = new javax.swing.JTextField();
+        msj1 = new javax.swing.JLabel();
+        msj2 = new javax.swing.JLabel();
+        nombreProducto = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/superLogo (1) (1).png"))); // NOI18N
+
+        msjTitulo.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
+        msjTitulo.setText("Agregar producto a proveedor");
+
+        nombreProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreProveedorActionPerformed(evt);
+            }
+        });
+
+        msj1.setText("Ingrese el nombre del proveedor : ");
+
+        msj2.setText("Ingrese el nombre del producto :");
+
+        nombreProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreProductoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(msj2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(logo)
+                        .addGap(40, 40, 40)
+                        .addComponent(msjTitulo))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(nombreProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nombreProveedor, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(msj1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(logo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(msjTitulo)))
+                .addGap(59, 59, 59)
+                .addComponent(msj1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(msj2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(339, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nombreProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreProveedorActionPerformed
+
+    private void nombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreProductoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +143,11 @@ public class AgregarProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel logo;
+    private javax.swing.JLabel msj1;
+    private javax.swing.JLabel msj2;
+    private javax.swing.JLabel msjTitulo;
+    private javax.swing.JTextField nombreProducto;
+    private javax.swing.JTextField nombreProveedor;
     // End of variables declaration//GEN-END:variables
 }

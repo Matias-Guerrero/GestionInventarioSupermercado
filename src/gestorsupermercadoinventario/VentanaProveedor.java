@@ -34,14 +34,16 @@ public class VentanaProveedor extends javax.swing.JFrame {
         mostrarPro = new javax.swing.JButton();
         modificarProd = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        exit = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
+        backToMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(550, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         msj.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
         msj.setText("Menú productos suministrados por proveedores");
+        getContentPane().add(msj, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 191, -1, -1));
 
         agregarProd.setText(" Agregar producto a proveedor");
         agregarProd.setPreferredSize(new java.awt.Dimension(214, 23));
@@ -50,6 +52,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 agregarProdActionPerformed(evt);
             }
         });
+        getContentPane().add(agregarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 232, 222, -1));
 
         eliminarProd.setText("Eliminar producto a proveedor");
         eliminarProd.setPreferredSize(new java.awt.Dimension(214, 23));
@@ -58,6 +61,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 eliminarProdActionPerformed(evt);
             }
         });
+        getContentPane().add(eliminarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 273, 222, -1));
 
         buscarProd.setText("Buscar producto a proveedor");
         buscarProd.setPreferredSize(new java.awt.Dimension(214, 23));
@@ -66,6 +70,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 buscarProdActionPerformed(evt);
             }
         });
+        getContentPane().add(buscarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 314, 222, -1));
 
         listaProd.setText("Lista de producto a proveedor");
         listaProd.setPreferredSize(new java.awt.Dimension(214, 23));
@@ -74,6 +79,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 listaProdActionPerformed(evt);
             }
         });
+        getContentPane().add(listaProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 355, 222, -1));
 
         mostrarPro.setText("Mostrar productos y su stock");
         mostrarPro.setPreferredSize(new java.awt.Dimension(214, 23));
@@ -82,6 +88,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 mostrarProActionPerformed(evt);
             }
         });
+        getContentPane().add(mostrarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 396, 222, -1));
 
         modificarProd.setText("Modificar producto a proveedor");
         modificarProd.addActionListener(new java.awt.event.ActionListener() {
@@ -89,68 +96,19 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 modificarProdActionPerformed(evt);
             }
         });
-
-        exit.setText("Salir");
-        exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitActionPerformed(evt);
-            }
-        });
+        getContentPane().add(modificarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 437, 222, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, -1, 380));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/superLogo.png"))); // NOI18N
+        getContentPane().add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 375, 185));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(msj))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(agregarProd, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                            .addComponent(eliminarProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buscarProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(listaProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mostrarPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modificarProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(94, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(msj)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(agregarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(eliminarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(buscarProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(listaProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(mostrarPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(modificarProd)
-                .addGap(39, 39, 39)
-                .addComponent(exit, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        backToMenu.setText("Volver a Inicio");
+        backToMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(backToMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,30 +122,46 @@ public class VentanaProveedor extends javax.swing.JFrame {
 
     private void eliminarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProdActionPerformed
         // TODO add your handling code here:
+        EliminarProducto eProd = new EliminarProducto(); 
+        eProd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_eliminarProdActionPerformed
 
     private void buscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProdActionPerformed
         // TODO add your handling code here:
+        BuscarProducto bProd = new BuscarProducto(); 
+        bProd.setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_buscarProdActionPerformed
 
     private void listaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProdActionPerformed
         // TODO add your handling code here:
+        ListaProducto lProd = new ListaProducto(); 
+        lProd.setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_listaProdActionPerformed
 
     private void mostrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProActionPerformed
         // TODO add your handling code here:
+        MostrarProducto mProd = new MostrarProducto(); 
+        mProd.setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_mostrarProActionPerformed
 
     private void modificarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProdActionPerformed
         // TODO add your handling code here:
+        ModificarProducto modProd = new ModificarProducto(); 
+        modProd.setVisible(true); 
+        this.dispose();
     }//GEN-LAST:event_modificarProdActionPerformed
 
-    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+    private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
-        // Cerrar la aplicación completa
-        System.exit(0);
-         
-    }//GEN-LAST:event_exitActionPerformed
+        VentanaInicio newVinicio = new VentanaInicio(); 
+        newVinicio.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_backToMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,9 +200,9 @@ public class VentanaProveedor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarProd;
+    private javax.swing.JButton backToMenu;
     private javax.swing.JButton buscarProd;
     private javax.swing.JButton eliminarProd;
-    private javax.swing.JButton exit;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton listaProd;
     private javax.swing.JLabel logo;
