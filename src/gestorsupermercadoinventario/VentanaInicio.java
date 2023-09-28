@@ -26,57 +26,38 @@ public class VentanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        msjBienvenida = new javax.swing.JLabel();
+        btnMenuProveedor = new javax.swing.JButton();
+        imgSupermarket = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supermarket.png"))); // NOI18N
+        msjBienvenida.setFont(new java.awt.Font("Noteworthy", 0, 20)); // NOI18N
+        msjBienvenida.setText("Bienvenid@ al gestor de inventario de supermecado");
+        getContentPane().add(msjBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, -1, 30));
 
-        jLabel2.setText("jLabel2");
+        btnMenuProveedor.setFont(new java.awt.Font("Noteworthy", 0, 16)); // NOI18N
+        btnMenuProveedor.setText("Ir a Menú");
+        btnMenuProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuProveedorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMenuProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 140, 40));
 
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton2");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(jLabel2)))
-                .addContainerGap(78, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(155, 155, 155))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(26, 26, 26))
-        );
+        imgSupermarket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/supermarket.png"))); // NOI18N
+        getContentPane().add(imgSupermarket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 500));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMenuProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProveedorActionPerformed
+        // TODO add your handling code here:
+        VentanaProveedor newVproveedor = new VentanaProveedor();
+        newVproveedor.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMenuProveedorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,9 +95,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnMenuProveedor;
+    private javax.swing.JLabel imgSupermarket;
+    private javax.swing.JLabel msjBienvenida;
     // End of variables declaration//GEN-END:variables
 }
