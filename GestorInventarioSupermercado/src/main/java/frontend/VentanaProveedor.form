@@ -30,17 +30,6 @@
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="agregarProducto" max="32767" attributes="0"/>
-                          <Component id="eliminarProducto" alignment="0" max="32767" attributes="0"/>
-                          <Component id="buscarProducto" alignment="0" max="32767" attributes="0"/>
-                          <Component id="listaProducto" alignment="0" max="32767" attributes="0"/>
-                          <Component id="mostrarProducto" alignment="0" max="32767" attributes="0"/>
-                          <Component id="modificarProducto" alignment="0" pref="222" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -48,6 +37,17 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="logo" min="-2" pref="370" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="eliminarProducto" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="agregarProducto" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="buscarProducto" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="listaProducto" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="mostrarProducto" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
+                          <Component id="modificarProducto" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace pref="99" max="32767" attributes="0"/>
@@ -100,31 +100,49 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar producto a proveedor "/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarProductoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buscarProducto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar producto a proveedor "/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarProductoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="listaProducto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lista de producto a proveedor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaProductoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="mostrarProducto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Mostrar productos y su stock"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostrarProductoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="modificarProducto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar producto a proveedor"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarProductoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exit">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="logo">
       <Properties>
@@ -132,7 +150,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/frontend/superLogo.png"/>
+          <Image iconType="2" name="/Users/samirabecerra/Desktop/PROYECTO SIA/GestionInventarioSupermercado/GestorInventarioSupermercado/src/main/java/frontend/superLogo.png"/>
         </Property>
       </Properties>
     </Component>

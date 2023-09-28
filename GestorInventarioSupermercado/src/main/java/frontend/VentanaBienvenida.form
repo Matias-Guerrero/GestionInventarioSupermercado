@@ -62,6 +62,17 @@
         </DimensionLayout>
       </Layout>
     </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JEditorPane" name="jEditorPane1">
+        </Component>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
     </Menu>
   </NonVisualComponents>
@@ -145,7 +156,7 @@
     <Component class="javax.swing.JLabel" name="imgSupermarket">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/frontend/supermarket.png"/>
+          <Image iconType="2" name="/Users/samirabecerra/Desktop/PROYECTO SIA/GestionInventarioSupermercado/GestorInventarioSupermercado/src/main/java/frontend/supermarket.png"/>
         </Property>
       </Properties>
       <Constraints>

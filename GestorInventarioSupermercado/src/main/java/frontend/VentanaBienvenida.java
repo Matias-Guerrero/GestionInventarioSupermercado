@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/Application.java to edit this template
  */
 package frontend;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,6 +16,10 @@ public class VentanaBienvenida extends javax.swing.JFrame {
      */
     public VentanaBienvenida() {
         initComponents();
+        // Cargar la imagen "supermarket.png" desde la ubicación correcta
+        ImageIcon iconoSupermarket = new ImageIcon(getClass().getResource("supermarket.png"));
+        imgSupermarket.setIcon(iconoSupermarket);  // Configurar la imagen en el JLabel imgSupermarket
+        
     }
 
     /**
@@ -30,6 +35,8 @@ public class VentanaBienvenida extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jEditorPane1 = new javax.swing.JEditorPane();
         jLabel1 = new javax.swing.JLabel();
         BtnMenuProveedor = new javax.swing.JButton();
         BtnMenuProducto = new javax.swing.JButton();
@@ -83,6 +90,8 @@ public class VentanaBienvenida extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jScrollPane1.setViewportView(jEditorPane1);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
@@ -109,7 +118,7 @@ public class VentanaBienvenida extends javax.swing.JFrame {
         MsjBienvenida.setText("Bienvenid@ al gestor de inventario de supermercado");
         getContentPane().add(MsjBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, -1, -1));
 
-        imgSupermarket.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/supermarket.png"))); // NOI18N
+        imgSupermarket.setIcon(new javax.swing.ImageIcon("/Users/samirabecerra/Desktop/PROYECTO SIA/GestionInventarioSupermercado/GestorInventarioSupermercado/src/main/java/frontend/supermarket.png")); // NOI18N
         getContentPane().add(imgSupermarket, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 470));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, -1, -1));
         getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
@@ -122,11 +131,8 @@ public class VentanaBienvenida extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         VentanaProveedor newVproveedor = new VentanaProveedor();
-        
         newVproveedor.setVisible(true);
-        
         this.dispose();
-        
     }//GEN-LAST:event_BtnMenuProveedorActionPerformed
 
     private void BtnMenuProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnMenuProductoActionPerformed
@@ -180,10 +186,12 @@ public class VentanaBienvenida extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel imgSupermarket;
     private javax.swing.JDialog jDialog1;
+    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables

@@ -49,19 +49,49 @@ public class VentanaProveedor extends javax.swing.JFrame {
         });
 
         eliminarProducto.setText("Eliminar producto a proveedor ");
+        eliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarProductoActionPerformed(evt);
+            }
+        });
 
         buscarProducto.setText("Buscar producto a proveedor ");
+        buscarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarProductoActionPerformed(evt);
+            }
+        });
 
         listaProducto.setText("Lista de producto a proveedor");
+        listaProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaProductoActionPerformed(evt);
+            }
+        });
 
         mostrarProducto.setText("Mostrar productos y su stock");
+        mostrarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarProductoActionPerformed(evt);
+            }
+        });
 
         modificarProducto.setText("Modificar producto a proveedor");
+        modificarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarProductoActionPerformed(evt);
+            }
+        });
 
         exit.setText("Salir");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
 
         logo.setForeground(new java.awt.Color(255, 255, 255));
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/frontend/superLogo.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon("/Users/samirabecerra/Desktop/PROYECTO SIA/GestionInventarioSupermercado/GestorInventarioSupermercado/src/main/java/frontend/superLogo.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,20 +104,20 @@ public class VentanaProveedor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(agregarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(eliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buscarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(listaProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(mostrarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modificarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(logo, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(eliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(agregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listaProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mostrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modificarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,6 +149,30 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void agregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProductoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_agregarProductoActionPerformed
+
+    private void eliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_eliminarProductoActionPerformed
+
+    private void buscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarProductoActionPerformed
+
+    private void listaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaProductoActionPerformed
+
+    private void mostrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostrarProductoActionPerformed
+
+    private void modificarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modificarProductoActionPerformed
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments

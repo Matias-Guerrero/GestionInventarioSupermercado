@@ -15,6 +15,8 @@ public class Ventana {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        VentanaBienvenida open = new VentanaBienvenida(); 
+        open.setVisible(true); 
+        
     }
-    
 }
