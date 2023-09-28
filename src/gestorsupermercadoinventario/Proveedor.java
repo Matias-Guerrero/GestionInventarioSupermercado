@@ -1,7 +1,6 @@
 package gestorsupermercadoinventario;
 
 import java.util.ArrayList;
-import java.util.Currency;
 
 public class Proveedor {
     private String nombreProveedor;

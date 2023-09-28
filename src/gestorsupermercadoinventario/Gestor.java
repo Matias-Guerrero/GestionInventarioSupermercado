@@ -5,17 +5,17 @@ import java.util.HashMap;
 import java.io.*;
 
 public class Gestor {
-    private ArrayList<Proveedor> proveedores;
+    private ArrayList proveedores;
     private HashMap<String, Producto> mapaProductos;
 
     // Constructor
     public Gestor() {
-        this.proveedores = new ArrayList<Proveedor>(); // Inicializa el ArrayList de proveedores
+        this.proveedores = new ArrayList(); // Inicializa el ArrayList de proveedores
         this.mapaProductos = new HashMap<String, Producto>(); // Inicializa el HashMap de productos
     }
 
     // Getters
-    public ArrayList<Proveedor> getProveedores() {
+    public ArrayList getProveedores() {
         return this.proveedores;
     }
 
@@ -24,7 +24,7 @@ public class Gestor {
     }
 
     // Setters
-    public void setProveedores(ArrayList<Proveedor> proveedores) {
+    public void setProveedores(ArrayList proveedores) {
         this.proveedores = proveedores;
     }
 
@@ -47,10 +47,11 @@ public class Gestor {
                     // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
                     Producto productoExistente = this.mapaProductos.get(producto.getNombre());
                     productoExistente.actualizarStock(producto.getCantidadStock(), true);
-
                 } else {
-                    producto.setCodigoBarra(Producto.generarCodigoBarra());
-                    this.mapaProductos.put(producto.getNombre(), producto);
+                    Producto productoNuevo = new Producto(producto.getNombre(), producto.getPrecio(), producto.getCantidadStock());
+                    
+                    productoNuevo.setCodigoBarra(Producto.generarCodigoBarra());
+                    this.mapaProductos.put(producto.getNombre(), productoNuevo);
                 }
 
                 return true;
@@ -86,13 +87,14 @@ public class Gestor {
     }
     
     public Proveedor buscarProveedor(String nombreProveedor) {
-        
-        for (Proveedor proveedor : this.proveedores) {
-            if (proveedor.getNombre().equals(nombreProveedor)) {
-                return proveedor;
+        for (Object proveedorObj : this.proveedores) {
+            if (proveedorObj instanceof Proveedor) {
+                Proveedor proveedor = (Proveedor) proveedorObj;
+                if (proveedor.getNombre().equals(nombreProveedor)) {
+                    return proveedor;
+                }
             }
         }
-        
         return null;
     }
 
@@ -123,7 +125,10 @@ public class Gestor {
     public void cargarDatosDesdeArchivo(String nombreArchivo) {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
-            Proveedor proveedor = null;
+            ProveedorLocal proveedorLocal = null;
+            ProveedorInternacional proveedorInternacional = null;
+            
+            boolean local = false;
 
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) {
@@ -131,39 +136,72 @@ public class Gestor {
                 }
 
                 String[] partes = linea.split(",");
-                if (partes.length == 2) {
+                
+                if (partes.length == 4) {
                     // Esto indica una línea de proveedor
                     String nombreProveedor = partes[0];
                     String correoElectronico = partes[1];
-                    proveedor = new Proveedor(nombreProveedor, correoElectronico);
-                    proveedores.add(proveedor);
-                } else if (partes.length == 3 && proveedor != null) {
+
+                    if (linea.contains("Local,")) {
+                        // Proveedor local
+                        String region = partes[2];
+                        proveedorLocal = new ProveedorLocal(nombreProveedor, correoElectronico, region);
+                        proveedores.add(proveedorLocal);
+                        local = true;
+                    } else {
+                        // Proveedor internacional
+                        String pais = partes[2];
+                        proveedorInternacional = new ProveedorInternacional(nombreProveedor, correoElectronico, pais);
+                        proveedores.add(proveedorInternacional);
+                        local = false;
+                    }
+                } else if (partes.length == 3) {
                     // Esto indica una línea de producto
                     String nombreProducto = partes[0];
                     double precio = Double.parseDouble(partes[1]);
                     int cantidadStock = Integer.parseInt(partes[2]);
                     Producto producto = new Producto(nombreProducto, precio, cantidadStock);
-                    proveedor.agregarProductoSuministrado(producto);
-                    mapaProductos.put(nombreProducto, producto);
+                    
+                    System.out.println(producto.getCantidadStock());
+
+                    // Agregar el producto al proveedor correspondiente
+                    if (local == true) {
+                        this.agregarProductoAProveedor(proveedorLocal.getNombre(), producto);
+                    } else {
+                        this.agregarProductoAProveedor(proveedorInternacional.getNombre(), producto);
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     
     public void guardarDatosEnArchivo(String nombreArchivo) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
-            for (Proveedor proveedor : proveedores) {
-                // Escribir los datos del proveedor en una línea
-                bw.write(proveedor.getNombre() + "," + proveedor.getCorreoElectronico());
-                bw.newLine(); // Nueva línea para separar proveedores de productos
+            for (Object proveedorObj : proveedores) {
+                if (proveedorObj instanceof ProveedorLocal) {
+                    ProveedorLocal proveedorLocal = (ProveedorLocal) proveedorObj;
+                    // Escribir los datos del proveedor local en una línea
+                    bw.write(proveedorLocal.getNombre() + "," + proveedorLocal.getCorreoElectronico() + ",Local," + proveedorLocal.getRegion());
+                    bw.newLine(); // Nueva línea para separar proveedores de productos
 
-                for (Producto producto : proveedor.getProductosSuministrados()) {
-                    // Escribir los datos del producto en una línea
-                    bw.write(producto.getNombre() + "," + producto.getPrecio() + "," + producto.getCantidadStock());
-                    bw.newLine(); // Nueva línea para separar productos
+                    // Escribir los datos de los productos suministrados por el proveedor local
+                    for (Producto producto : proveedorLocal.getProductosSuministrados()) {
+                        bw.write(producto.getNombre() + "," + producto.getPrecio() + "," + producto.getCantidadStock());
+                        bw.newLine(); // Nueva línea para separar productos
+                    }
+                } else if (proveedorObj instanceof ProveedorInternacional) {
+                    ProveedorInternacional proveedorInternacional = (ProveedorInternacional) proveedorObj;
+                    // Escribir los datos del proveedor internacional en una línea
+                    bw.write(proveedorInternacional.getNombre() + "," + proveedorInternacional.getCorreoElectronico() + ",Internacional," + proveedorInternacional.getPais());
+                    bw.newLine(); // Nueva línea para separar proveedores de productos
+
+                    // Escribir los datos de los productos suministrados por el proveedor internacional
+                    for (Producto producto : proveedorInternacional.getProductosSuministrados()) {
+                        bw.write(producto.getNombre() + "," + producto.getPrecio() + "," + producto.getCantidadStock());
+                        bw.newLine(); // Nueva línea para separar productos
+                    }
                 }
             }
         } catch (IOException e) {

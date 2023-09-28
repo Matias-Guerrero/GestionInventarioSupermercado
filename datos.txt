@@ -1,11 +1,11 @@
-Proveedor A,proveedora@example.com
-Manzanaaas,2000.0,100
-Plátanos,1800.0,150
-sal,2300.0,45
-Proveedor B,proveedorb@example.com
-Plátanos,1800.0,150
+Proveedor A,proveedora@example.com,Local,Local
+Manzanas,2000.0,100
+Platanos,1800.0,150
+Proveedor B,proveedorb@example.com,Internacional,Internacional
+Platanos,1800.0,150
 Naranjas,3000.0,100
-Proveedor C,proveedorc@example.com
+Leche,1000.0,100
+Proveedor C,proveedorc@example.com,Local,Local
 Leche,1000.0,300
 Huevos,2200.0,250
 Pan,1500.0,200
