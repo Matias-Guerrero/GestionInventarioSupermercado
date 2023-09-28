@@ -157,6 +157,9 @@ public class VentanaProveedor extends javax.swing.JFrame {
 
     private void agregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProdActionPerformed
         // TODO add your handling code here:
+        AgregarProducto aProd = new AgregarProducto();
+        aProd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_agregarProdActionPerformed
 
     private void eliminarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProdActionPerformed
