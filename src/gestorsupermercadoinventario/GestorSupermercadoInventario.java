@@ -46,7 +46,7 @@ public class GestorSupermercadoInventario {
      * @param args Argumentos de línea de comandos (no utilizados en este caso).
      * @throws IOException Excepción de E/S en caso de errores.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, StockNegativoException, PrecioNegativoException {
         // TODO code application logic here
         VentanaInicio ventana = new VentanaInicio();
         ventana.setVisible(true);

@@ -28,7 +28,7 @@ public class Gestor {
      * @param producto        Producto a agregar.
      * @return True si se agrega con éxito, False en caso contrario.
      */
-    public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) {
+    public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) throws StockNegativoException, PrecioNegativoException {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
@@ -64,7 +64,7 @@ public class Gestor {
      * @param cantidadEliminar Cantidad del producto a eliminar.
      * @return Producto eliminado o null si no se encuentra.
      */
-    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar){
+    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar) throws StockNegativoException{
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
@@ -144,7 +144,7 @@ public class Gestor {
      *
      * @param nombreArchivo Nombre del archivo desde donde cargar datos.
      */
-    public void cargarDatosDesdeArchivo(String nombreArchivo) {
+    public void cargarDatosDesdeArchivo(String nombreArchivo) throws StockNegativoException, PrecioNegativoException {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
             ProveedorLocal proveedorLocal = null;
