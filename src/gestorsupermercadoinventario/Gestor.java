@@ -255,4 +255,33 @@ public class Gestor {
 
         return productosFiltrados;
     }
+    
+    public StringBuilder generarInformeCSV() {
+        StringBuilder informe = new StringBuilder();
+
+        // Encabezados del informe
+        informe.append("NombreProveedor,CorreoElectronico,NombreProducto,CodigoBarra,Precio,CantidadStock,TipoProveedor\n");
+
+        // Iterar sobre los proveedores y sus productos
+        for (Object objProveedor : proveedores) {
+            if (objProveedor instanceof Proveedor) {
+                Proveedor proveedor = (Proveedor) objProveedor;
+                String tipoProveedor = proveedor instanceof ProveedorLocal ? "Local" : "Internacional";
+
+                for (Producto producto : proveedor.getProductosSuministrados()) {
+                    // Agregar información al informe
+                    informe.append(proveedor.getNombre()).append(",");
+                    informe.append(proveedor.getCorreoElectronico()).append(",");
+                    informe.append(producto.getNombre()).append(",");
+                    informe.append(producto.getCodigoBarra()).append(",");
+                    informe.append(producto.getPrecio()).append(",");
+                    informe.append(producto.getCantidadStock()).append(",");
+                    informe.append(tipoProveedor).append("\n");
+                }
+            }
+        }
+
+        return informe;
+    }
+
 }

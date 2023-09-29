@@ -297,6 +297,19 @@ public class GestorSupermercadoInventario {
                     // Guardar datos al salir de la aplicación
                     gestor.guardarDatosEnArchivo("datos.txt");
                     
+                    // Generar Reporte
+                    // Llamar al método para generar el informe en formato CSV
+                    StringBuilder informeCSV = gestor.generarInformeCSV();
+
+                    // Guardar el informe en un archivo
+                    try (PrintWriter writer = new PrintWriter(new FileWriter("informe.csv"))) {
+                        writer.println(informeCSV);
+                        System.out.println("Informe generado y guardado en informe.csv");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Error al guardar el informe en archivo.");
+                    }
+                    
                     System.out.println("Saliendo...");
 
                     pausar();
