@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author samirabecerra
  */
-public class BuscarProducto extends javax.swing.JFrame {
+public class VentanaBuscarProducto extends javax.swing.JFrame {
     private Gestor gestor;
     /**
      * Creates new form BuscarProducto
      */
-    public BuscarProducto(Gestor gestor) {
+    public VentanaBuscarProducto(Gestor gestor) {
         initComponents();
         this.gestor = gestor; 
     }
@@ -152,21 +152,22 @@ public class BuscarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaBuscarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gestor gestor = null;
-                new BuscarProducto(gestor).setVisible(true);
+                new VentanaBuscarProducto(gestor).setVisible(true);
             }
         });
     }

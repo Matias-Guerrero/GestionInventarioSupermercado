@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author samirabecerra
  */
-public class EliminarProducto extends javax.swing.JFrame {
+public class VentanaEliminarProducto extends javax.swing.JFrame {
     private Gestor gestor; 
     /**
      * Creates new form EliminarProducto
      */
-    public EliminarProducto(Gestor gestor) {
+    public VentanaEliminarProducto(Gestor gestor) {
         initComponents();
         this.gestor = gestor;
     }
@@ -43,7 +43,6 @@ public class EliminarProducto extends javax.swing.JFrame {
         textEliminar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(476, 650));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/superLogo (1) (1).png"))); // NOI18N
 
@@ -194,7 +193,7 @@ public class EliminarProducto extends javax.swing.JFrame {
         try {
             productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
         } catch (StockNegativoException ex) {
-            Logger.getLogger(EliminarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaEliminarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         if (productoEliminado != null) {
@@ -229,21 +228,22 @@ public class EliminarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEliminarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gestor gestor = null; 
-                new EliminarProducto(gestor).setVisible(true);
+                new VentanaEliminarProducto(gestor).setVisible(true);
             }
         });
     }

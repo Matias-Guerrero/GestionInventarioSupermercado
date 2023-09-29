@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author samirabecerra
  */
-public class AgregarProducto extends javax.swing.JFrame {
+public class VentanaAgregarProducto extends javax.swing.JFrame {
     private Gestor gestor;
     /**
      * Creates new form AgregarProducto
      */
-    public AgregarProducto(Gestor gestor) {
+    public VentanaAgregarProducto(Gestor gestor) {
         initComponents();
         this.gestor = gestor;
     }
@@ -238,9 +238,9 @@ public class AgregarProducto extends javax.swing.JFrame {
         try {
             producto = new Producto(nombreProducto, precio, cantidadStock);
         } catch (StockNegativoException ex) {
-            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaAgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
         } catch (PrecioNegativoException ex) {
-            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaAgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //Producto producto = new Producto(nombreProducto, precio, cantidadStock);
@@ -255,9 +255,9 @@ public class AgregarProducto extends javax.swing.JFrame {
             try {
                 exito = gestor.agregarProductoAProveedor(nombreProveedor,producto);
             } catch (StockNegativoException ex) {
-                Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(VentanaAgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
             } catch (PrecioNegativoException ex) {
-                Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(VentanaAgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             if (exito) {
@@ -294,21 +294,22 @@ public class AgregarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaAgregarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gestor gestor = null; 
-                new AgregarProducto(gestor).setVisible(true);
+                new VentanaAgregarProducto(gestor).setVisible(true);
             }
         });
     }

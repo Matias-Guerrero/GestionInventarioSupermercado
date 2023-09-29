@@ -30,7 +30,6 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         msjBienvenida = new javax.swing.JLabel();
         btnMenuProveedor = new javax.swing.JButton();
-        btnMenuProducto = new javax.swing.JButton();
         exit = new javax.swing.JButton();
         imgSupermarket = new javax.swing.JLabel();
 
@@ -48,17 +47,7 @@ public class VentanaInicio extends javax.swing.JFrame {
                 btnMenuProveedorActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenuProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 150, 40));
-
-        btnMenuProducto.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
-        btnMenuProducto.setText("Menú Producto");
-        btnMenuProducto.setPreferredSize(new java.awt.Dimension(145, 35));
-        btnMenuProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMenuProductoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnMenuProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 140, 40));
+        getContentPane().add(btnMenuProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 150, 40));
 
         exit.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         exit.setText("Salir");
@@ -81,13 +70,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         newVproveedor.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuProveedorActionPerformed
-
-    private void btnMenuProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProductoActionPerformed
-        // TODO add your handling code here:
-        VentanaProducto newVproducto = new VentanaProducto(); 
-        newVproducto.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnMenuProductoActionPerformed
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
@@ -132,7 +114,6 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnMenuProducto;
     private javax.swing.JButton btnMenuProveedor;
     private javax.swing.JButton exit;
     private javax.swing.JLabel imgSupermarket;

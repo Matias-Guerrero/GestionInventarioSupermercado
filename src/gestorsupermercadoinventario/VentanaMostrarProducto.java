@@ -11,12 +11,12 @@ import java.util.List;
  *
  * @author samirabecerra
  */
-public class MostrarProducto extends javax.swing.JFrame {
+public class VentanaMostrarProducto extends javax.swing.JFrame {
     private Gestor gestor;
     /**
      * Creates new form MostrarProducto
      */
-    public MostrarProducto(Gestor gestor) {
+    public VentanaMostrarProducto(Gestor gestor) {
         initComponents();
         this.gestor = gestor; 
     }
@@ -159,21 +159,22 @@ public class MostrarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaMostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaMostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaMostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaMostrarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gestor gestor = null; 
-                new MostrarProducto(gestor).setVisible(true);
+                new VentanaMostrarProducto(gestor).setVisible(true);
             }
         });
     }

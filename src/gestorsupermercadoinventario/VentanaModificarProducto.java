@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author samirabecerra
  */
-public class ModificarProducto extends javax.swing.JFrame {
+public class VentanaModificarProducto extends javax.swing.JFrame {
     private Gestor gestor; 
     /**
      * Creates new form ModificarProducto
      */
-    public ModificarProducto(Gestor gestor) {
+    public VentanaModificarProducto(Gestor gestor) {
         initComponents();
         this.gestor = gestor; 
     }
@@ -258,21 +258,22 @@ public class ModificarProducto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaModificarProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Gestor gestor = null; 
-                new ModificarProducto(gestor).setVisible(true);
+                new VentanaModificarProducto(gestor).setVisible(true);
             }
         });
     }

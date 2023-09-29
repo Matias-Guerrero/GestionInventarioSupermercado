@@ -117,42 +117,42 @@ public class VentanaProveedor extends javax.swing.JFrame {
 
     private void agregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProdActionPerformed
         // TODO add your handling code here:
-        AgregarProducto aProd = new AgregarProducto(this.gestor);
+        VentanaAgregarProducto aProd = new VentanaAgregarProducto(this.gestor);
         aProd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_agregarProdActionPerformed
 
     private void eliminarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProdActionPerformed
         // TODO add your handling code here:
-        EliminarProducto eProd = new EliminarProducto(this.gestor); 
+        VentanaEliminarProducto eProd = new VentanaEliminarProducto(this.gestor); 
         eProd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_eliminarProdActionPerformed
 
     private void buscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProdActionPerformed
         // TODO add your handling code here:
-        BuscarProducto bProd = new BuscarProducto(this.gestor); 
+        VentanaBuscarProducto bProd = new VentanaBuscarProducto(this.gestor); 
         bProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_buscarProdActionPerformed
 
     private void listaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProdActionPerformed
         // TODO add your handling code here:
-        ListaProducto lProd = new ListaProducto(this.gestor); 
+        VentanaListaProducto lProd = new VentanaListaProducto(this.gestor); 
         lProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_listaProdActionPerformed
 
     private void mostrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProActionPerformed
         // TODO add your handling code here:
-        MostrarProducto mProd = new MostrarProducto(this.gestor); 
+        VentanaMostrarProducto mProd = new VentanaMostrarProducto(this.gestor); 
         mProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_mostrarProActionPerformed
 
     private void modificarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProdActionPerformed
         // TODO add your handling code here:
-        ModificarProducto modProd = new ModificarProducto(this.gestor); 
+        VentanaModificarProducto modProd = new VentanaModificarProducto(this.gestor); 
         modProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_modificarProdActionPerformed
