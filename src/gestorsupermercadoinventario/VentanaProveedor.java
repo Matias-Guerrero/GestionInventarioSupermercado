@@ -41,6 +41,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
         filtrarProd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(514, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         msj.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
@@ -98,7 +99,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 modificarProdActionPerformed(evt);
             }
         });
-        getContentPane().add(modificarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 437, 222, -1));
+        getContentPane().add(modificarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 222, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, -1, 380));
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/superLogo.png"))); // NOI18N
@@ -118,7 +119,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 filtrarProdActionPerformed(evt);
             }
         });
-        getContentPane().add(filtrarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 220, -1));
+        getContentPane().add(filtrarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 470, 220, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
