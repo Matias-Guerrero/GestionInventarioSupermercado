@@ -56,7 +56,7 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
         jLabel3.setText("Modoficar Producto a Proveedor");
 
-        backToMenu.setText("Volver al Inicio");
+        backToMenu.setText("Volver a Menú");
         backToMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backToMenuActionPerformed(evt);
@@ -236,8 +236,8 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
 
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
-        VentanaInicio newVinicio = new VentanaInicio(this.gestor); 
-        newVinicio.setVisible(true);
+        VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 
+        newMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backToMenuActionPerformed
 

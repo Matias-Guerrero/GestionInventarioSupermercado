@@ -48,7 +48,7 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        backToMenu.setText("Volver al Inicio");
+        backToMenu.setText("Volver a Menú");
         backToMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backToMenuActionPerformed(evt);
@@ -108,8 +108,8 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
 
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
-        VentanaInicio newVinicio = new VentanaInicio(this.gestor); 
-        newVinicio.setVisible(true);
+        VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 
+        newMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backToMenuActionPerformed
 

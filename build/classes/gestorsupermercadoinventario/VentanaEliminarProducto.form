@@ -64,7 +64,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -155,7 +155,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="backToMenu">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Volver al inicio"/>
+        <Property name="text" type="java.lang.String" value="Volver a Men&#xfa;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backToMenuActionPerformed"/>

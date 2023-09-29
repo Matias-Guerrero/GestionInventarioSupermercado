@@ -54,7 +54,7 @@ public class VentanaListaProducto extends javax.swing.JFrame {
             }
         });
 
-        backToMenu.setText("Volver al Inicio");
+        backToMenu.setText("Volver a Menú");
         backToMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backToMenuActionPerformed(evt);
@@ -153,8 +153,8 @@ public class VentanaListaProducto extends javax.swing.JFrame {
 
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
-        VentanaInicio newVinicio = new VentanaInicio(this.gestor); 
-        newVinicio.setVisible(true);
+        VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 
+        newMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backToMenuActionPerformed
 
