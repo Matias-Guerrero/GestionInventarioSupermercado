@@ -15,8 +15,16 @@ public class Producto {
      * @param nombreProducto Nombre del producto.
      * @param precio         Precio del producto.
      * @param cantidadStock  Cantidad en stock del producto.
+     * @throws StockNegativoException Si se intenta crear un producto con stock negativo.
+     * @throws PrecioNegativoException Si se intenta crear un producto con precio negativo.
      */
-    public Producto(String nombreProducto,double precio, int cantidadStock) {
+    public Producto(String nombreProducto, double precio, int cantidadStock) throws StockNegativoException, PrecioNegativoException {
+        if (cantidadStock < 0) {
+            throw new StockNegativoException("El stock no puede ser negativo.");
+        }
+        if (precio < 0) {
+            throw new PrecioNegativoException("El precio no puede ser negativo.");
+        }
         this.nombreProducto = nombreProducto;
         this.precio = precio;
         this.cantidadStock = cantidadStock;
@@ -119,29 +127,40 @@ public class Producto {
 
     // Métodos de sobrecarga
 
-    // Sobrecarga del método para actualizar el stock
     /**
-     * Actualiza el stock del producto.
-     *
-     * @param nuevaCantidad Nueva cantidad en stock.
-     */
-    public void actualizarStock(int nuevaCantidad) {
-        this.cantidadStock = nuevaCantidad;
+    * Actualiza el stock del producto.
+    *
+    * @param nuevaCantidad Nueva cantidad en stock.
+    * @throws StockNegativoException Si la actualización del stock resulta en un valor negativo.
+    */
+    public void actualizarStock(int nuevaCantidad) throws StockNegativoException {
+       int nuevoStock = this.cantidadStock + nuevaCantidad;
+       if (nuevoStock < 0) {
+           throw new StockNegativoException("El stock no puede ser negativo.");
+       }
+       this.cantidadStock = nuevoStock;
     }
-    
+
     /**
-     * Actualiza el stock del producto con opción de aumentar o disminuir.
-     *
-     * @param nuevaCantidad Nueva cantidad en stock.
-     * @param aumentar      True para aumentar, False para disminuir.
-     */
-    public void actualizarStock(int nuevaCantidad, boolean aumentar) {
-        if (aumentar) {
-            this.cantidadStock += nuevaCantidad;
-        } else {
-            this.cantidadStock -= nuevaCantidad;
-        }
+    * Actualiza el stock del producto con opción de aumentar o disminuir.
+    *
+    * @param nuevaCantidad Nueva cantidad en stock.
+    * @param aumentar      True para aumentar, False para disminuir.
+    * @throws StockNegativoException Si la actualización del stock resulta en un valor negativo.
+    */
+    public void actualizarStock(int nuevaCantidad, boolean aumentar) throws StockNegativoException {
+       if (aumentar) {
+           actualizarStock(nuevaCantidad);
+       } else {
+           // Si está disminuyendo, verifique si el stock resultará en un valor negativo.
+           int nuevoStock = this.cantidadStock - nuevaCantidad;
+           if (nuevoStock < 0) {
+               throw new StockNegativoException("El stock no puede ser negativo.");
+           }
+           this.cantidadStock = nuevoStock;
+       }
     }
+
     
     /**
      * Modifica los atributos del producto.
