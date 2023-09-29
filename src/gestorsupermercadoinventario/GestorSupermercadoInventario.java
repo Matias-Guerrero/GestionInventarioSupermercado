@@ -1,18 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package gestorsupermercadoinventario;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
+ * Clase principal que representa el sistema de gestión de productos suministrados por proveedores.
+ * Esta clase contiene el método principal `main` que inicia la aplicación.
  *
- * @author mati1
  */
 public class GestorSupermercadoInventario {
     
     // Metodos Auxiliares
+    
+    /**
+     * Limpia la pantalla de la consola según el sistema operativo.
+     */
     public static void limpiarPantalla() {
         try {
             final String os = System.getProperty("os.name");
@@ -27,7 +29,10 @@ public class GestorSupermercadoInventario {
         catch (final IOException e) {  
         }
     }
-
+    
+    /**
+     * Pausa la ejecución del programa y espera que el usuario presione ENTER.
+     */
     public static void pausar() {
         System.out.println("Presione ENTER para continuar...");
         try {
@@ -37,9 +42,11 @@ public class GestorSupermercadoInventario {
     }
 
     /**
-     * @param args the command line arguments
+     * Método principal de la aplicación que inicia la interfaz de usuario y maneja las operaciones.
+     * @param args Argumentos de línea de comandos (no utilizados en este caso).
+     * @throws IOException Excepción de E/S en caso de errores.
      */
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, StockNegativoException, PrecioNegativoException {
         // TODO code application logic here
         
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
@@ -64,7 +71,8 @@ public class GestorSupermercadoInventario {
             System.out.println("4) Lista de Productos de Proveedor");
             System.out.println("5) Mostrar Productos y su stock");
             System.out.println("6) Editar Producto a Proveedor");
-            System.out.println("7) Salir");
+            System.out.println("7) Filtrar Productos por Stock");
+            System.out.println("8) Salir");
             System.out.println("=============================================================");
             System.out.print("Opcion: ");
 
@@ -254,11 +262,54 @@ public class GestorSupermercadoInventario {
                     break;
                 case 7:
                     // ========================================
+                    // Filtar por cantidad de Stock
+                    // ========================================  
+                    
+                    // Solicitar la cantidad mínima y máxima
+                    System.out.println("Ingrese la cantidad minima de stock: ");
+                    int stockMinimo = Integer.parseInt(lector.readLine());
+                    
+                    System.out.println("Ingrese la cantidad maxima de stock: ");
+                    int stockMaximo = Integer.parseInt(lector.readLine());
+                    
+                    // Se filtran los productos 
+                    ArrayList<Producto> productosFiltrados = gestor.filtrarProductosPorStock(stockMinimo, stockMaximo);
+                    
+                    if(productosFiltrados.isEmpty() == true){
+                        System.out.println("No hay Productos con Stock entre " + stockMinimo + " y " + stockMaximo + ":");  
+                    }
+                    else{
+                        //Se muestran los productos filtrados
+                        System.out.println("Productos con Stock entre " + stockMinimo + " y " + stockMaximo + ":");
+
+                        for(Producto productoActual: productosFiltrados){
+                            System.out.println(productoActual.obtenerInformacion());
+                        }
+                    }
+                    
+                    
+                   
+                    break;
+                case 8:
+                    // ========================================
                     // Salir
                     // ========================================
                     
                     // Guardar datos al salir de la aplicación
                     gestor.guardarDatosEnArchivo("datos.txt");
+                    
+                    // Generar Reporte
+                    // Llamar al método para generar el informe en formato CSV
+                    StringBuilder informeCSV = gestor.generarInformeCSV();
+
+                    // Guardar el informe en un archivo
+                    try (PrintWriter writer = new PrintWriter(new FileWriter("informe.csv"))) {
+                        writer.println(informeCSV);
+                        System.out.println("Informe generado y guardado en informe.csv");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        System.out.println("Error al guardar el informe en archivo.");
+                    }
                     
                     System.out.println("Saliendo...");
 

@@ -3,38 +3,32 @@ package gestorsupermercadoinventario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
-import java.util.List;
 
+/**
+ * Clase que representa un gestor para administrar proveedores y productos en un supermercado.
+ */
 public class Gestor {
-    private ArrayList<Proveedor> proveedores;
+    private ArrayList proveedores;
     private HashMap<String, Producto> mapaProductos;
 
-    // Constructor
+    /**
+     * Constructor de la clase Gestor.
+     * Inicializa el ArrayList de proveedores y el HashMap de productos.
+     */
     public Gestor() {
-        this.proveedores = new ArrayList<Proveedor>(); // Inicializa el ArrayList de proveedores
+        this.proveedores = new ArrayList(); // Inicializa el ArrayList de proveedores
         this.mapaProductos = new HashMap<String, Producto>(); // Inicializa el HashMap de productos
-    }
-
-    // Getters
-    public ArrayList<Proveedor> getProveedores() {
-        return this.proveedores;
-    }
-
-    public HashMap<String, Producto> getMapaProductos() {
-        return this.mapaProductos;
-    }
-
-    // Setters
-    public void setProveedores(ArrayList<Proveedor> proveedores) {
-        this.proveedores = proveedores;
-    }
-
-    public void setMapaProductos(HashMap<String, Producto> mapaProductos) {
-        this.mapaProductos = mapaProductos;
     }
     
     // Metodos
-    public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) {
+    /**
+     * Agrega un producto a un proveedor existente.
+     *
+     * @param nombreProveedor Nombre del proveedor.
+     * @param producto        Producto a agregar.
+     * @return True si se agrega con éxito, False en caso contrario.
+     */
+    public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) throws StockNegativoException, PrecioNegativoException {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
@@ -48,10 +42,11 @@ public class Gestor {
                     // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
                     Producto productoExistente = this.mapaProductos.get(producto.getNombre());
                     productoExistente.actualizarStock(producto.getCantidadStock(), true);
-
                 } else {
-                    producto.setCodigoBarra(Producto.generarCodigoBarra());
-                    this.mapaProductos.put(producto.getNombre(), producto);
+                    Producto productoNuevo = new Producto(producto.getNombre(), producto.getPrecio(), producto.getCantidadStock());
+                    
+                    productoNuevo.setCodigoBarra(Producto.generarCodigoBarra());
+                    this.mapaProductos.put(producto.getNombre(), productoNuevo);
                 }
 
                 return true;
@@ -60,12 +55,20 @@ public class Gestor {
         
         return false;
     }
-
-    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar){
+    
+    /**
+     * Elimina un producto de un proveedor.
+     *
+     * @param nombreProveedor  Nombre del proveedor.
+     * @param nombreProducto   Nombre del producto a eliminar.
+     * @param cantidadEliminar Cantidad del producto a eliminar.
+     * @return Producto eliminado o null si no se encuentra.
+     */
+    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar) throws StockNegativoException{
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
-            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto);
+            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
             
             if (producto != null) {
                 proveedor.eliminarProductoSuministrado(nombreProducto);
@@ -86,17 +89,29 @@ public class Gestor {
         return null;
     }
     
+    /**
+     * Busca un proveedor por nombre.
+     *
+     * @param nombreProveedor Nombre del proveedor a buscar.
+     * @return Proveedor encontrado o null si no se encuentra.
+     */
     public Proveedor buscarProveedor(String nombreProveedor) {
-        
-        for (Proveedor proveedor : this.proveedores) {
-            if (proveedor.getNombre().equals(nombreProveedor)) {
-                return proveedor;
+        for (Object proveedorObj : this.proveedores) {
+            if (proveedorObj instanceof Proveedor) {
+                Proveedor proveedor = (Proveedor) proveedorObj;
+                if (proveedor.getNombre().equals(nombreProveedor)) {
+                    return proveedor;
+                }
             }
         }
-        
         return null;
     }
-
+    
+    /**
+     * Muestra la lista de productos suministrados por un proveedor.
+     *
+     * @param nombreProveedor Nombre del proveedor.
+     */
     public void mostrarProductosSuministrados(String nombreProveedor) {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
@@ -107,7 +122,10 @@ public class Gestor {
             System.out.println("No se encontró el proveedor");
         }
     }
-
+    
+    /**
+     * Muestra la lista de productos y su stock.
+     */
     public void mostrarProductosStock() {
         System.out.println("Listado de Productos en Stock");
         System.out.println("=============================");
@@ -121,10 +139,18 @@ public class Gestor {
         }
     }
     
-    public void cargarDatosDesdeArchivo(String nombreArchivo) {
+    /**
+     * Carga datos desde un archivo en el formato especificado.
+     *
+     * @param nombreArchivo Nombre del archivo desde donde cargar datos.
+     */
+    public void cargarDatosDesdeArchivo(String nombreArchivo) throws StockNegativoException, PrecioNegativoException {
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
-            Proveedor proveedor = null;
+            ProveedorLocal proveedorLocal = null;
+            ProveedorInternacional proveedorInternacional = null;
+            
+            boolean local = false;
 
             while ((linea = br.readLine()) != null) {
                 if (linea.trim().isEmpty()) {
@@ -132,47 +158,130 @@ public class Gestor {
                 }
 
                 String[] partes = linea.split(",");
-                if (partes.length == 2) {
+                
+                if (partes.length == 4) {
                     // Esto indica una línea de proveedor
                     String nombreProveedor = partes[0];
                     String correoElectronico = partes[1];
-                    proveedor = new Proveedor(nombreProveedor, correoElectronico);
-                    proveedores.add(proveedor);
-                } else if (partes.length == 3 && proveedor != null) {
+
+                    if (linea.contains("Local,")) {
+                        // Proveedor local
+                        String region = partes[2];
+                        proveedorLocal = new ProveedorLocal(nombreProveedor, correoElectronico, region);
+                        proveedores.add(proveedorLocal);
+                        local = true;
+                    } else {
+                        // Proveedor internacional
+                        String pais = partes[2];
+                        proveedorInternacional = new ProveedorInternacional(nombreProveedor, correoElectronico, pais);
+                        proveedores.add(proveedorInternacional);
+                        local = false;
+                    }
+                } else if (partes.length == 3) {
                     // Esto indica una línea de producto
                     String nombreProducto = partes[0];
                     double precio = Double.parseDouble(partes[1]);
                     int cantidadStock = Integer.parseInt(partes[2]);
                     Producto producto = new Producto(nombreProducto, precio, cantidadStock);
-                    proveedor.agregarProductoSuministrado(producto);
-                    mapaProductos.put(nombreProducto, producto);
+                    
+                    System.out.println(producto.getCantidadStock());
+
+                    // Agregar el producto al proveedor correspondiente
+                    if (local == true) {
+                        this.agregarProductoAProveedor(proveedorLocal.getNombre(), producto);
+                    } else {
+                        this.agregarProductoAProveedor(proveedorInternacional.getNombre(), producto);
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     
+    /**
+     * Guarda datos en un archivo en el formato especificado.
+     *
+     * @param nombreArchivo Nombre del archivo donde guardar datos.
+     */
     public void guardarDatosEnArchivo(String nombreArchivo) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
-            for (Proveedor proveedor : proveedores) {
-                // Escribir los datos del proveedor en una línea
-                bw.write(proveedor.getNombre() + "," + proveedor.getCorreoElectronico());
-                bw.newLine(); // Nueva línea para separar proveedores de productos
+            for (Object proveedorObj : proveedores) {
+                if (proveedorObj instanceof ProveedorLocal) {
+                    ProveedorLocal proveedorLocal = (ProveedorLocal) proveedorObj;
+                    // Escribir los datos del proveedor local en una línea
+                    bw.write(proveedorLocal.getNombre() + "," + proveedorLocal.getCorreoElectronico() + ",Local," + proveedorLocal.getRegion());
+                    bw.newLine(); // Nueva línea para separar proveedores de productos
 
-                for (Producto producto : proveedor.getProductosSuministrados()) {
-                    // Escribir los datos del producto en una línea
-                    bw.write(producto.getNombre() + "," + producto.getPrecio() + "," + producto.getCantidadStock());
-                    bw.newLine(); // Nueva línea para separar productos
+                    // Escribir los datos de los productos suministrados por el proveedor local
+                    for (Producto producto : proveedorLocal.getProductosSuministrados()) {
+                        bw.write(producto.getNombre() + "," + producto.getPrecio() + "," + producto.getCantidadStock());
+                        bw.newLine(); // Nueva línea para separar productos
+                    }
+                } else if (proveedorObj instanceof ProveedorInternacional) {
+                    ProveedorInternacional proveedorInternacional = (ProveedorInternacional) proveedorObj;
+                    // Escribir los datos del proveedor internacional en una línea
+                    bw.write(proveedorInternacional.getNombre() + "," + proveedorInternacional.getCorreoElectronico() + ",Internacional," + proveedorInternacional.getPais());
+                    bw.newLine(); // Nueva línea para separar proveedores de productos
+
+                    // Escribir los datos de los productos suministrados por el proveedor internacional
+                    for (Producto producto : proveedorInternacional.getProductosSuministrados()) {
+                        bw.write(producto.getNombre() + "," + producto.getPrecio() + "," + producto.getCantidadStock());
+                        bw.newLine(); // Nueva línea para separar productos
+                    }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Filtra productos por rango de stock.
+     *
+     * @param stockMinimo Stock mínimo.
+     * @param stockMaximo Stock máximo.
+     * @return Lista de productos filtrados.
+     */
+    public ArrayList<Producto> filtrarProductosPorStock(int stockMinimo, int stockMaximo) {
+        ArrayList<Producto> productosFiltrados = new ArrayList<>();
 
-    List<Producto> obtenerProductos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (Producto producto : mapaProductos.values()) {
+            int cantidadStock = producto.getCantidadStock();
+            if (cantidadStock >= stockMinimo && cantidadStock <= stockMaximo) {
+                productosFiltrados.add(producto);
+            }
+        }
+
+        return productosFiltrados;
     }
+    
+    public StringBuilder generarInformeCSV() {
+        StringBuilder informe = new StringBuilder();
+
+        // Encabezados del informe
+        informe.append("NombreProveedor,CorreoElectronico,NombreProducto,CodigoBarra,Precio,CantidadStock,TipoProveedor\n");
+
+        // Iterar sobre los proveedores y sus productos
+        for (Object objProveedor : proveedores) {
+            if (objProveedor instanceof Proveedor) {
+                Proveedor proveedor = (Proveedor) objProveedor;
+                String tipoProveedor = proveedor instanceof ProveedorLocal ? "Local" : "Internacional";
+
+                for (Producto producto : proveedor.getProductosSuministrados()) {
+                    // Agregar información al informe
+                    informe.append(proveedor.getNombre()).append(",");
+                    informe.append(proveedor.getCorreoElectronico()).append(",");
+                    informe.append(producto.getNombre()).append(",");
+                    informe.append(producto.getCodigoBarra()).append(",");
+                    informe.append(producto.getPrecio()).append(",");
+                    informe.append(producto.getCantidadStock()).append(",");
+                    informe.append(tipoProveedor).append("\n");
+                }
+            }
+        }
+
+        return informe;
+    }
+
 }
