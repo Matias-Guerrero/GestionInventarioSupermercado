@@ -1,7 +1,6 @@
 Proveedor A,proveedora@example.com
 Manzanaaas,2000.0,100
 Plátanos,1800.0,150
-sal,2300.0,45
 Proveedor B,proveedorb@example.com
 Plátanos,1800.0,150
 Naranjas,3000.0,100

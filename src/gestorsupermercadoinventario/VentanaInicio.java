@@ -9,12 +9,14 @@ package gestorsupermercadoinventario;
  * @author mati1
  */
 public class VentanaInicio extends javax.swing.JFrame {
-
+    private Gestor gestor; 
     /**
      * Creates new form VentanaInicio
      */
-    public VentanaInicio() {
+    public VentanaInicio(Gestor gestor) {
+        
         initComponents();
+        this.gestor = gestor; 
     }
 
     /**
@@ -75,7 +77,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 
     private void btnMenuProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProveedorActionPerformed
         // TODO add your handling code here:
-        VentanaProveedor newVproveedor = new VentanaProveedor();
+        VentanaProveedor newVproveedor = new VentanaProveedor(this.gestor);
         newVproveedor.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuProveedorActionPerformed
@@ -123,7 +125,8 @@ public class VentanaInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaInicio().setVisible(true);
+                Gestor gestor = null;
+                new VentanaInicio(gestor).setVisible(true);
             }
         });
     }

@@ -9,12 +9,13 @@ package gestorsupermercadoinventario;
  * @author samirabecerra
  */
 public class ModificarProducto extends javax.swing.JFrame {
-
+    private Gestor gestor; 
     /**
      * Creates new form ModificarProducto
      */
-    public ModificarProducto() {
+    public ModificarProducto(Gestor gestor) {
         initComponents();
+        this.gestor = gestor; 
     }
 
     /**
@@ -72,7 +73,8 @@ public class ModificarProducto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarProducto().setVisible(true);
+                Gestor gestor = null; 
+                new ModificarProducto(gestor).setVisible(true);
             }
         });
     }

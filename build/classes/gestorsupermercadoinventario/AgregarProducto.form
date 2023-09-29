@@ -26,22 +26,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="backToMenu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="270" max="-2" attributes="0"/>
+                  <Component id="msj4" min="-2" max="-2" attributes="0"/>
+                  <Component id="msj3" min="-2" max="-2" attributes="0"/>
                   <Component id="msj2" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="logo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="msjTitulo" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="msj1" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="nombreProducto" alignment="0" max="32767" attributes="0"/>
-                      <Component id="nombreProveedor" alignment="0" max="32767" attributes="0"/>
-                      <Component id="msj1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TextStock" alignment="0" pref="270" max="32767" attributes="0"/>
+                      <Component id="TextPrecio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TextProducto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="TextProveedor" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="btnAgregarConfirmacion" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="81" max="32767" attributes="0"/>
+              <EmptySpace pref="95" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,12 +75,26 @@
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="msj1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="nombreProveedor" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="TextProveedor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Component id="msj2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="nombreProducto" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="339" max="32767" attributes="0"/>
+              <Component id="TextProducto" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="msj3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="TextPrecio" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="msj4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="TextStock" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="btnAgregarConfirmacion" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="44" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="backToMenu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -87,9 +115,9 @@
         <Property name="text" type="java.lang.String" value="Agregar producto a proveedor"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nombreProveedor">
+    <Component class="javax.swing.JTextField" name="TextProveedor">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreProveedorActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextProveedorActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="msj1">
@@ -102,10 +130,61 @@
         <Property name="text" type="java.lang.String" value="Ingrese el nombre del producto :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nombreProducto">
+    <Component class="javax.swing.JTextField" name="TextProducto">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nombreProductoActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextProductoActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="msj3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ingrese el precio del producto :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextPrecio">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextPrecioActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="msj4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ingrese la cantidad en stock del producto : "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TextStock">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextStockActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnAgregarConfirmacion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Agregar Producto"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarConfirmacionActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="backToMenu">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Volver Inicio"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backToMenuActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

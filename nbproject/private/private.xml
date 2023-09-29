@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/mati1/OneDrive/Documentos/NetBeansProjects/GestorSupermercadoInventario/src/gestorsupermercadoinventario/Proveedor.java</file>
-            <file>file:/C:/Users/mati1/OneDrive/Documentos/NetBeansProjects/GestorSupermercadoInventario/src/gestorsupermercadoinventario/VentanaInicio.java</file>
-            <file>file:/C:/Users/mati1/OneDrive/Documentos/NetBeansProjects/GestorSupermercadoInventario/src/gestorsupermercadoinventario/GestorSupermercadoInventario.java</file>
-            <file>file:/C:/Users/mati1/OneDrive/Documentos/NetBeansProjects/GestorSupermercadoInventario/src/gestorsupermercadoinventario/Gestor.java</file>
-            <file>file:/C:/Users/mati1/OneDrive/Documentos/NetBeansProjects/GestorSupermercadoInventario/src/gestorsupermercadoinventario/Producto.java</file>
+            <file>file:/Users/samirabecerra/Desktop/PROYECTO%20SIA/GestionInventarioSupermercado/src/gestorsupermercadoinventario/VentanaProveedor.java</file>
+            <file>file:/Users/samirabecerra/Desktop/PROYECTO%20SIA/GestionInventarioSupermercado/src/gestorsupermercadoinventario/GestorSupermercadoInventario.java</file>
+            <file>file:/Users/samirabecerra/Desktop/PROYECTO%20SIA/GestionInventarioSupermercado/src/gestorsupermercadoinventario/VentanaInicio.java</file>
+            <file>file:/Users/samirabecerra/Desktop/PROYECTO%20SIA/GestionInventarioSupermercado/src/gestorsupermercadoinventario/AgregarProducto.java</file>
         </group>
     </open-files>
 </project-private>

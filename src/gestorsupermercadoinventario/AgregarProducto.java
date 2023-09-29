@@ -4,17 +4,20 @@
  */
 package gestorsupermercadoinventario;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author samirabecerra
  */
 public class AgregarProducto extends javax.swing.JFrame {
-
+    private Gestor gestor;
     /**
      * Creates new form AgregarProducto
      */
-    public AgregarProducto() {
+    public AgregarProducto(Gestor gestor) {
         initComponents();
+        this.gestor = gestor;
     }
 
     /**
@@ -28,10 +31,18 @@ public class AgregarProducto extends javax.swing.JFrame {
 
         logo = new javax.swing.JLabel();
         msjTitulo = new javax.swing.JLabel();
-        nombreProveedor = new javax.swing.JTextField();
+        TextProveedor = new javax.swing.JTextField();
         msj1 = new javax.swing.JLabel();
         msj2 = new javax.swing.JLabel();
-        nombreProducto = new javax.swing.JTextField();
+        TextProducto = new javax.swing.JTextField();
+        msj3 = new javax.swing.JLabel();
+        TextPrecio = new javax.swing.JTextField();
+        msj4 = new javax.swing.JLabel();
+        TextStock = new javax.swing.JTextField();
+        btnAgregarConfirmacion = new javax.swing.JButton();
+        backToMenu = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -41,9 +52,9 @@ public class AgregarProducto extends javax.swing.JFrame {
         msjTitulo.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
         msjTitulo.setText("Agregar producto a proveedor");
 
-        nombreProveedor.addActionListener(new java.awt.event.ActionListener() {
+        TextProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreProveedorActionPerformed(evt);
+                TextProveedorActionPerformed(evt);
             }
         });
 
@@ -51,29 +62,75 @@ public class AgregarProducto extends javax.swing.JFrame {
 
         msj2.setText("Ingrese el nombre del producto :");
 
-        nombreProducto.addActionListener(new java.awt.event.ActionListener() {
+        TextProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreProductoActionPerformed(evt);
+                TextProductoActionPerformed(evt);
             }
         });
+
+        msj3.setText("Ingrese el precio del producto :");
+
+        TextPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextPrecioActionPerformed(evt);
+            }
+        });
+
+        msj4.setText("Ingrese la cantidad en stock del producto : ");
+
+        TextStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextStockActionPerformed(evt);
+            }
+        });
+
+        btnAgregarConfirmacion.setText("Agregar Producto");
+        btnAgregarConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarConfirmacionActionPerformed(evt);
+            }
+        });
+
+        backToMenu.setText("Volver Inicio");
+        backToMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToMenuActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backToMenu)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(msj4)
+                    .addComponent(msj3)
                     .addComponent(msj2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(logo)
                         .addGap(40, 40, 40)
                         .addComponent(msjTitulo))
+                    .addComponent(msj1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(nombreProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nombreProveedor, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(msj1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addComponent(TextStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                        .addComponent(TextPrecio, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TextProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(TextProveedor, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(btnAgregarConfirmacion)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,24 +145,121 @@ public class AgregarProducto extends javax.swing.JFrame {
                 .addGap(59, 59, 59)
                 .addComponent(msj1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addComponent(TextProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(msj2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addComponent(TextProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(msj3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(msj4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(TextStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(btnAgregarConfirmacion, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(backToMenu)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProveedorActionPerformed
+    private void TextProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreProveedorActionPerformed
+    }//GEN-LAST:event_TextProveedorActionPerformed
 
-    private void nombreProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreProductoActionPerformed
+    private void TextProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreProductoActionPerformed
+    }//GEN-LAST:event_TextProductoActionPerformed
+
+    private void TextStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextStockActionPerformed
+
+    private void TextPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPrecioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextPrecioActionPerformed
+
+    private void btnAgregarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarConfirmacionActionPerformed
+        // TODO add your handling code here:
+        
+        String nombreProveedor = TextProveedor.getText();
+        String nombreProducto = TextProducto.getText();
+        double precio = 0.0;
+        int cantidadStock = 0;
+        boolean datosValidos = false;
+
+        
+
+        if (nombreProveedor == null || (!nombreProveedor.equals("Proveedor A") && !nombreProveedor.equals("Proveedor B") && !nombreProveedor.equals("Proveedor C"))) {
+            JOptionPane.showMessageDialog(null, "Error: El proveedor debe ser 'Proveedor A', 'Proveedor B' o 'Proveedor C'.");
+            return; // Sale del método si ocurre un error
+        }
+
+        if (nombreProducto == null || nombreProducto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
+            return; // Sale del método si ocurre un error
+        }
+        
+        try {
+            precio = Double.parseDouble(TextPrecio.getText());
+            if (precio < 0) {
+                JOptionPane.showMessageDialog(null, "Error: El precio debe ser un número válido y mayor que 0.");
+                return;
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Error: El precio debe ser un número válido.");
+            return;
+        }
+
+        try {
+            cantidadStock = Integer.parseInt(TextStock.getText());
+            if (cantidadStock < 0) {
+                JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido y mayor que 0.");
+                return;
+            }
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido.");
+            return;
+        }
+
+        datosValidos = true;
+        
+
+        Producto producto = new Producto(nombreProducto, precio, cantidadStock);
+
+        //Producto producto = new Producto(nombreProducto, precio, cantidadStock);
+        String datos = "Nombre del proveedor: " + nombreProveedor + "\n" + "Nombre del producto: " + nombreProducto + "\n" + "Precio: " + precio + "\n" + "Cantidad en stock: " + cantidadStock;
+        
+        JOptionPane.showMessageDialog(null,datos);
+        jTextArea1.setText(datos);
+        
+        if (datosValidos) {
+        // Agregar el producto al gestor (debes implementar este método en tu Gestor)
+        boolean exito = gestor.agregarProductoAProveedor(nombreProveedor,producto);
+
+            if (exito) {
+                JOptionPane.showMessageDialog(null,"Producto agregado con éxito");
+            } else {
+                JOptionPane.showMessageDialog(null,"No se pudo agregar el producto.");
+            }
+        }   
+
+        
+    }//GEN-LAST:event_btnAgregarConfirmacionActionPerformed
+
+    private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
+        // TODO add your handling code here:
+        VentanaInicio newVinicio = new VentanaInicio(this.gestor); 
+        newVinicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backToMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,17 +291,26 @@ public class AgregarProducto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarProducto().setVisible(true);
+                Gestor gestor = null; 
+                new AgregarProducto(gestor).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TextPrecio;
+    private javax.swing.JTextField TextProducto;
+    private javax.swing.JTextField TextProveedor;
+    private javax.swing.JTextField TextStock;
+    private javax.swing.JButton backToMenu;
+    private javax.swing.JButton btnAgregarConfirmacion;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel msj1;
     private javax.swing.JLabel msj2;
+    private javax.swing.JLabel msj3;
+    private javax.swing.JLabel msj4;
     private javax.swing.JLabel msjTitulo;
-    private javax.swing.JTextField nombreProducto;
-    private javax.swing.JTextField nombreProveedor;
     // End of variables declaration//GEN-END:variables
 }

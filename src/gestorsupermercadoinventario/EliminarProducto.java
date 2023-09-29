@@ -3,18 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gestorsupermercadoinventario;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author samirabecerra
  */
 public class EliminarProducto extends javax.swing.JFrame {
-
+    private Gestor gestor; 
     /**
      * Creates new form EliminarProducto
      */
-    public EliminarProducto() {
+    public EliminarProducto(Gestor gestor) {
         initComponents();
+        this.gestor = gestor;
     }
 
     /**
@@ -26,21 +27,183 @@ public class EliminarProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        msj1 = new javax.swing.JLabel();
+        delete = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        backToMenu = new javax.swing.JButton();
+        textProveedor = new javax.swing.JTextField();
+        msj2 = new javax.swing.JLabel();
+        textProducto = new javax.swing.JTextField();
+        msj3 = new javax.swing.JLabel();
+        textEliminar = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(476, 650));
+
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/superLogo (1) (1).png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
+        jLabel1.setText("Eliminar producto del proveedor ");
+
+        msj1.setText("Ingrese el nombre del proveedor :");
+
+        delete.setText("Eliminar");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        backToMenu.setText("Volver al inicio");
+        backToMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backToMenuActionPerformed(evt);
+            }
+        });
+
+        msj2.setText("Ingrese el nombre del producto :");
+
+        textProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textProductoActionPerformed(evt);
+            }
+        });
+
+        msj3.setText("Ingrese cantidad a eliminar :");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(msj1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(textProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(msj2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)
+                                .addComponent(backToMenu))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(logo)
+                                .addGap(42, 42, 42)
+                                .addComponent(jLabel1))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(msj3))
+                            .addComponent(textProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                            .addComponent(textEliminar))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logo)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel1)))
+                .addGap(44, 44, 44)
+                .addComponent(msj1)
+                .addGap(12, 12, 12)
+                .addComponent(textProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(msj2)
+                .addGap(12, 12, 12)
+                .addComponent(textProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(msj3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(172, 172, 172)
+                        .addComponent(backToMenu)
+                        .addGap(11, 11, 11))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(textEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textProductoActionPerformed
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+        String nombreProveedor = textProveedor.getText();
+        String nombreProducto = textProducto.getText();
+        int cantidadEliminar = 0;
+
+        
+
+        if (nombreProveedor == null || (!nombreProveedor.equals("Proveedor A") && !nombreProveedor.equals("Proveedor B") && !nombreProveedor.equals("Proveedor C"))) {
+            JOptionPane.showMessageDialog(null, "Error: El proveedor debe ser 'Proveedor A', 'Proveedor B' o 'Proveedor C'.");
+            return; // Sale del método si ocurre un error
+        }
+
+        if (nombreProducto == null || nombreProducto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
+            return; // Sale del método si ocurre un error
+        }
+        
+        try {
+            cantidadEliminar = Integer.parseInt(textEliminar.getText());
+        } catch (NumberFormatException nfe) {
+            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido.");
+            return; // Sale del método si ocurre un error
+        }
+
+
+
+        // En este punto, tienes datos válidos
+            String datos = "Nombre del proveedor: " + nombreProveedor + "\n" + "Nombre del producto:  " + nombreProducto + "\n" +"Cantidad a eliminar :"+ cantidadEliminar;
+            JOptionPane.showMessageDialog(null, datos);
+            jTextArea1.setText(datos);
+
+        // Eliminar el producto del gestor (debes implementar este método en tu Gestor)
+        Producto productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
+
+        if (productoEliminado != null) {
+            JOptionPane.showMessageDialog(null, "Producto eliminado con éxito");
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el producto.");
+        }
+
+    }//GEN-LAST:event_deleteActionPerformed
+
+    private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
+        // TODO add your handling code here:
+        VentanaInicio newVinicio = new VentanaInicio(this.gestor); 
+        newVinicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backToMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +235,24 @@ public class EliminarProducto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EliminarProducto().setVisible(true);
+                Gestor gestor = null; 
+                new EliminarProducto(gestor).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backToMenu;
+    private javax.swing.JButton delete;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel logo;
+    private javax.swing.JLabel msj1;
+    private javax.swing.JLabel msj2;
+    private javax.swing.JLabel msj3;
+    private javax.swing.JTextField textEliminar;
+    private javax.swing.JTextField textProducto;
+    private javax.swing.JTextField textProveedor;
     // End of variables declaration//GEN-END:variables
 }
