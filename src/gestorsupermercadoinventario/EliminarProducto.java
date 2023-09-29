@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package gestorsupermercadoinventario;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -188,7 +190,12 @@ public class EliminarProducto extends javax.swing.JFrame {
             jTextArea1.setText(datos);
 
         // Eliminar el producto del gestor (debes implementar este método en tu Gestor)
-        Producto productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
+        Producto productoEliminado = null;
+        try {
+            productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
+        } catch (StockNegativoException ex) {
+            Logger.getLogger(EliminarProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if (productoEliminado != null) {
             JOptionPane.showMessageDialog(null, "Producto eliminado con éxito");

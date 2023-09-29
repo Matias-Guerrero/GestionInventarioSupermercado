@@ -4,6 +4,8 @@
  */
 package gestorsupermercadoinventario;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -232,7 +234,14 @@ public class AgregarProducto extends javax.swing.JFrame {
         datosValidos = true;
         
 
-        Producto producto = new Producto(nombreProducto, precio, cantidadStock);
+        Producto producto = null;
+        try {
+            producto = new Producto(nombreProducto, precio, cantidadStock);
+        } catch (StockNegativoException ex) {
+            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PrecioNegativoException ex) {
+            Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         //Producto producto = new Producto(nombreProducto, precio, cantidadStock);
         String datos = "Nombre del proveedor: " + nombreProveedor + "\n" + "Nombre del producto: " + nombreProducto + "\n" + "Precio: " + precio + "\n" + "Cantidad en stock: " + cantidadStock;
@@ -242,7 +251,14 @@ public class AgregarProducto extends javax.swing.JFrame {
         
         if (datosValidos) {
         // Agregar el producto al gestor (debes implementar este método en tu Gestor)
-        boolean exito = gestor.agregarProductoAProveedor(nombreProveedor,producto);
+        boolean exito = false;
+            try {
+                exito = gestor.agregarProductoAProveedor(nombreProveedor,producto);
+            } catch (StockNegativoException ex) {
+                Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (PrecioNegativoException ex) {
+                Logger.getLogger(AgregarProducto.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             if (exito) {
                 JOptionPane.showMessageDialog(null,"Producto agregado con éxito");
