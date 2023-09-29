@@ -1,0 +1,3 @@
+gestorsupermercadoinventario.ProveedorLocal
+gestorsupermercadoinventario.Proveedor
+gestorsupermercadoinventario.ProveedorInternacional

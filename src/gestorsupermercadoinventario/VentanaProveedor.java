@@ -38,9 +38,9 @@ public class VentanaProveedor extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         logo = new javax.swing.JLabel();
         backToMenu = new javax.swing.JButton();
+        filtrarProd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(550, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         msj.setFont(new java.awt.Font("Noteworthy", 0, 18)); // NOI18N
@@ -110,7 +110,15 @@ public class VentanaProveedor extends javax.swing.JFrame {
                 backToMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(backToMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 120, 30));
+        getContentPane().add(backToMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 120, 30));
+
+        filtrarProd.setText("Filtrar productos por stock");
+        filtrarProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtrarProdActionPerformed(evt);
+            }
+        });
+        getContentPane().add(filtrarProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 480, 220, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,6 +174,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
         
     }//GEN-LAST:event_backToMenuActionPerformed
 
+    private void filtrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarProdActionPerformed
+        // TODO add your handling code here:
+        VentanaFiltrarProducto filtrarProd = new VentanaFiltrarProducto(this.gestor); 
+        filtrarProd.setVisible(true); 
+        this.dispose();
+    }//GEN-LAST:event_filtrarProdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -207,6 +222,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private javax.swing.JButton backToMenu;
     private javax.swing.JButton buscarProd;
     private javax.swing.JButton eliminarProd;
+    private javax.swing.JButton filtrarProd;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton listaProd;
     private javax.swing.JLabel logo;
