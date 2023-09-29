@@ -48,14 +48,15 @@ public class GestorSupermercadoInventario {
      */
     public static void main(String[] args) throws IOException, StockNegativoException, PrecioNegativoException {
         // TODO code application logic here
-        VentanaInicio ventana = new VentanaInicio();
-        ventana.setVisible(true);
         
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         Gestor gestor = new Gestor(); // Crea una instancia del Gestor
 
         // Cargar datos iniciales
         gestor.cargarDatosDesdeArchivo("datos.txt");
+        
+        VentanaInicio ventana = new VentanaInicio(gestor);
+        ventana.setVisible(true);
         
         while (true) {
             int opcion;

@@ -183,8 +183,6 @@ public class Gestor {
                     double precio = Double.parseDouble(partes[1]);
                     int cantidadStock = Integer.parseInt(partes[2]);
                     Producto producto = new Producto(nombreProducto, precio, cantidadStock);
-                    
-                    System.out.println(producto.getCantidadStock());
 
                     // Agregar el producto al proveedor correspondiente
                     if (local == true) {
