@@ -39,8 +39,6 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
         textProveedor = new javax.swing.JTextField();
         msj2 = new javax.swing.JLabel();
         textProducto = new javax.swing.JTextField();
-        msj3 = new javax.swing.JLabel();
-        textEliminar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,8 +75,6 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
             }
         });
 
-        msj3.setText("Ingrese cantidad a eliminar :");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,25 +91,23 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
                         .addGap(84, 84, 84)
                         .addComponent(msj2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(backToMenu))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(logo)
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel1))))
+                        .addGap(161, 161, 161)
+                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(msj3))
-                            .addComponent(textProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                            .addComponent(textEliminar))))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(backToMenu)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGap(17, 17, 17)
+                                        .addComponent(textProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(logo)
+                                    .addGap(42, 42, 42)
+                                    .addComponent(jLabel1))))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,21 +126,13 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
                 .addComponent(msj2)
                 .addGap(12, 12, 12)
                 .addComponent(textProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(msj3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(backToMenu)
-                        .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addGap(52, 52, 52)
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(backToMenu)
+                .addContainerGap())
         );
 
         pack();
@@ -160,8 +146,6 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         String nombreProveedor = textProveedor.getText();
         String nombreProducto = textProducto.getText();
-        int cantidadEliminar = 0;
-
         
 
         if (nombreProveedor == null || (!nombreProveedor.equals("Proveedor A") && !nombreProveedor.equals("Proveedor B") && !nombreProveedor.equals("Proveedor C"))) {
@@ -174,27 +158,22 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
             return; // Sale del método si ocurre un error
         }
         
-        try {
-            cantidadEliminar = Integer.parseInt(textEliminar.getText());
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido.");
-            return; // Sale del método si ocurre un error
-        }
-
+        
 
 
         // En este punto, tienes datos válidos
-            String datos = "Nombre del proveedor: " + nombreProveedor + "\n" + "Nombre del producto:  " + nombreProducto + "\n" +"Cantidad a eliminar :"+ cantidadEliminar;
+            String datos = "Nombre del proveedor: " + nombreProveedor + "\n" + "Nombre del producto:  " + nombreProducto;
             JOptionPane.showMessageDialog(null, datos);
             jTextArea1.setText(datos);
 
         // Eliminar el producto del gestor (debes implementar este método en tu Gestor)
         Producto productoEliminado = null;
-        try {
-            productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
-        } catch (StockNegativoException ex) {
+        
+        //try {
+            productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto);
+        /*} catch (StockNegativoException ex) {
             Logger.getLogger(VentanaEliminarProducto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
 
         if (productoEliminado != null) {
             JOptionPane.showMessageDialog(null, "Producto eliminado con éxito");
@@ -257,8 +236,6 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
     private javax.swing.JLabel logo;
     private javax.swing.JLabel msj1;
     private javax.swing.JLabel msj2;
-    private javax.swing.JLabel msj3;
-    private javax.swing.JTextField textEliminar;
     private javax.swing.JTextField textProducto;
     private javax.swing.JTextField textProveedor;
     // End of variables declaration//GEN-END:variables

@@ -3,6 +3,8 @@ package gestorsupermercadoinventario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase que representa un gestor para administrar proveedores y productos en un supermercado.
@@ -64,7 +66,40 @@ public class Gestor {
      * @param cantidadEliminar Cantidad del producto a eliminar.
      * @return Producto eliminado o null si no se encuentra.
      */
-    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar) throws StockNegativoException{
+    
+    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto) {//throws StockNegativoException{
+        Proveedor proveedor = this.buscarProveedor(nombreProveedor);
+        int cantidadEliminada;
+
+        if (proveedor != null) {
+            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
+
+            cantidadEliminada = producto.getCantidadStock();
+
+            if (producto != null) {
+                proveedor.eliminarProductoSuministrado(nombreProducto);
+
+                // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
+                Producto productoExistente = this.mapaProductos.get(producto.getNombre());
+                try {
+                    productoExistente.actualizarStock(cantidadEliminada, false);
+                } catch (StockNegativoException ex) {
+                    Logger.getLogger(Gestor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                //Si el producto se queda sin stock, se elimina del HashMap
+                if (productoExistente.getCantidadStock() == 0) {
+                    this.mapaProductos.remove(producto.getNombre());
+                }
+
+                return producto;
+            }
+        }
+
+        return null;
+    }
+
+    /*public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar) throws StockNegativoException{
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
         
         if (proveedor != null) {
@@ -87,7 +122,7 @@ public class Gestor {
         }
         
         return null;
-    }
+    }*/
     
     /**
      * Busca un proveedor por nombre.
@@ -126,7 +161,7 @@ public class Gestor {
     /**
      * Muestra la lista de productos y su stock.
      */
-    public void mostrarProductosStock() {
+    /*public void mostrarProductosStock() {
         System.out.println("Listado de Productos en Stock");
         System.out.println("=============================");
 
@@ -137,7 +172,12 @@ public class Gestor {
         for (Producto producto : this.mapaProductos.values()) {
             System.out.printf("%-20s %-20s %-20s %-20s\n", producto.getNombre(), producto.getCodigoBarra(), producto.getPrecio(), producto.getCantidadStock());
         }
+    }*/
+    
+    public HashMap mostrarProductosStock() {
+        return this.mapaProductos;
     }
+    
     
     /**
      * Carga datos desde un archivo en el formato especificado.

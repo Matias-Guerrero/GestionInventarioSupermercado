@@ -5,7 +5,8 @@
 package gestorsupermercadoinventario;
 
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
+import java.util.HashMap; 
 
 /**
  *
@@ -115,29 +116,31 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
 
     private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
         // TODO add your handling code here:
-        /*
+        
         StringBuilder productosText = new StringBuilder();
         productosText.append("Productos en Stock:\n");
         productosText.append("========================================\n");
 
         // Obtener la lista de productos del gestor (sustituye con tu implementación)
-        ArrayList<Producto> productos = Producto.getProductosSuministrados();
+        HashMap productos = gestor.mostrarProductosStock();
+        
+        // Luego, puedes agregar el encabezado y la información de productos al JTextArea.
+        jTextArea1.append("Listado de Productos en Stock\n");
+        jTextArea1.append("=============================\n");
+        jTextArea1.append(String.format("%-20s %-20s %-20s %-20s\n", "Nombre", "Codigo de Barra", "Precio", "Cantidad en Stock"));
+        jTextArea1.append(String.format("%-20s %-20s %-20s %-20s\n", "======", "===============", "======", "================="));
 
-        for (Producto producto : productos) {
-            productosText.append("Nombre: ").append(producto.getNombre()).append("\n");
-            productosText.append("Código de Barra: ").append(producto.getCodigoBarra()).append("\n");
-            productosText.append("Precio: ").append(producto.getPrecio()).append("\n");
-            productosText.append("Cantidad en Stock: ").append(producto.getCantidadStock()).append("\n");
-            productosText.append("========================================\n");
+        for (Object obj : productos.values()) {
+            if (obj instanceof Producto) {
+                Producto producto = (Producto) obj;
+                jTextArea1.append(String.format("%-20s %-20s %-20s %-20s\n", producto.getNombre(), producto.getCodigoBarra(), producto.getPrecio(), producto.getCantidadStock()));
+            }
         }
-
+        
+        
+        
         // Actualizar el JTextArea para mostrar la información de los productos
-        jTextArea1.setText(productosText.toString());
-
-
-        */
-
-
+        //jTextArea1.setText(productosText.toString());
 
         //gestor.mostrarProductosStock();
     }//GEN-LAST:event_mostrarActionPerformed
