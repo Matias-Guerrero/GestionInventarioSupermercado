@@ -169,11 +169,9 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
         // Eliminar el producto del gestor (debes implementar este método en tu Gestor)
         Producto productoEliminado = null;
         
-        //try {
-            productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto);
-        /*} catch (StockNegativoException ex) {
-            Logger.getLogger(VentanaEliminarProducto.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        
+        productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto);
+        
 
         if (productoEliminado != null) {
             JOptionPane.showMessageDialog(null, "Producto eliminado con éxito");

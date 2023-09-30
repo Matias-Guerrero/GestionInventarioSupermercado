@@ -218,7 +218,7 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
         //Producto productoEditar = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
         //boolean modificado = proveedor.modificarProductoSuministrado(nombreProducto, name, price, stock);
         
-        if(!proveedor.modificarProductoSuministrado(nombreProducto, name, price, stock)){
+        if(proveedor.modificarProductoSuministrado(nombreProducto, name, price, stock)){
             JOptionPane.showMessageDialog(null,"Producto modificado con éxito");
         } 
         else {
