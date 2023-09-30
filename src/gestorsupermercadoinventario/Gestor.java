@@ -99,30 +99,7 @@ public class Gestor {
         return null;
     }
 
-    /*public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar) throws StockNegativoException{
-        Proveedor proveedor = this.buscarProveedor(nombreProveedor);
-        
-        if (proveedor != null) {
-            Producto producto = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
-            
-            if (producto != null) {
-                proveedor.eliminarProductoSuministrado(nombreProducto);
-
-                // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
-                Producto productoExistente = this.mapaProductos.get(producto.getNombre());
-                productoExistente.actualizarStock(cantidadEliminar, false);
-
-                // Si el producto se queda sin stock, se elimina del HashMap
-                if (productoExistente.getCantidadStock() == 0) {
-                    this.mapaProductos.remove(producto.getNombre());
-                }
-
-                return producto;
-            }
-        }
-        
-        return null;
-    }*/
+    
     
     /**
      * Busca un proveedor por nombre.
@@ -174,6 +151,37 @@ public class Gestor {
         }
     }*/
     
+    // Método para modificar un producto y actualizar el HashMap
+    public boolean modificarProducto(String nombreProveedor, String nombreProducto, String nuevoNombre, double nuevoPrecio, int nuevaCantidadStock) throws StockNegativoException {
+        // Obtener el proveedor por nombre
+        Proveedor proveedor = buscarProveedor(nombreProveedor);
+        Producto productoProveedor = proveedor.buscarProductoSuministrado(nombreProducto);
+
+        if (proveedor != null && productoProveedor != null) {
+            Producto productoMapa = mapaProductos.get(nombreProducto);
+
+            if(productoMapa.getCantidadStock() ==  productoProveedor.getCantidadStock()) {
+                Producto remove = mapaProductos.remove(nombreProducto);
+            }
+            else{
+                productoMapa.actualizarStock(productoProveedor.getCantidadStock(), false);
+            }
+
+            // Llamar al método modificarProducto en la clase Proveedor
+            boolean modificado = proveedor.modificarProductoSuministrado(nombreProducto, nuevoNombre, nuevoPrecio, nuevaCantidadStock);
+
+            if (modificado) {
+                // Actualizar el HashMap
+                Producto productoModificado = proveedor.buscarProductoSuministrado(nuevoNombre);
+                mapaProductos.put(productoModificado.getCodigoBarra(), productoModificado);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public HashMap mostrarProductosStock() {
         return this.mapaProductos;
     }

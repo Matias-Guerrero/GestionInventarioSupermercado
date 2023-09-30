@@ -4,6 +4,8 @@
  */
 package gestorsupermercadoinventario;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -167,65 +169,73 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-        // TODO add your handling code here:
-        String nombreProveedor = nombreProv.getText();
-        String nombreProducto = nomPmodificar.getText();
-        String name = nombre.getText();
-        double price;
-        int stock;
-
-        if (nombreProveedor == null || (!nombreProveedor.equals("Proveedor A") && !nombreProveedor.equals("Proveedor B") && !nombreProveedor.equals("Proveedor C"))) {
-            JOptionPane.showMessageDialog(null, "Error: El proveedor debe ser 'Proveedor A', 'Proveedor B' o 'Proveedor C'.");
-            return; // Sale del método si ocurre un error
-        }
-        Proveedor proveedor = gestor.buscarProveedor(nombreProveedor);
-        Producto productoEditar = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
-
-        if (nombreProducto == null || nombreProducto.isEmpty() && productoEditar ==null) {
-            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
-            return; // Sale del método si ocurre un error
-        }
-        
-        
-        if (name == null || name.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
-            return; // Sale del método si ocurre un error
-        }
-        
-        try {
-            price = Double.parseDouble(newPrice.getText());
-            if (price < 0) {
-                JOptionPane.showMessageDialog(null, "Error: El precio debe ser un número válido y mayor que 0.");
+        try {                                     
+            jTextArea1.setText(""); 
+            // TODO add your handling code here:
+            String nombreProveedor = nombreProv.getText();
+            String nombreProducto = nomPmodificar.getText();
+            String name = nombre.getText();
+            double price;
+            int stock;
+            
+            if (nombreProveedor == null || (!nombreProveedor.equals("Proveedor A") && !nombreProveedor.equals("Proveedor B") && !nombreProveedor.equals("Proveedor C"))) {
+                JOptionPane.showMessageDialog(null, "Error: El proveedor debe ser 'Proveedor A', 'Proveedor B' o 'Proveedor C'.");
+                return; // Sale del método si ocurre un error
+            }
+            Proveedor proveedor = gestor.buscarProveedor(nombreProveedor);
+            Producto productoEditar = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
+            
+            if (nombreProducto == null || nombreProducto.isEmpty() && productoEditar ==null) {
+                JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
+                return; // Sale del método si ocurre un error
+            }
+            
+            
+            if (name == null || name.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
+                return; // Sale del método si ocurre un error
+            }
+            
+            try {
+                price = Double.parseDouble(newPrice.getText());
+                if (price < 0) {
+                    JOptionPane.showMessageDialog(null, "Error: El precio debe ser un número válido y mayor que 0.");
+                    return;
+                }
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Error: El precio debe ser un número válido.");
                 return;
             }
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Error: El precio debe ser un número válido.");
-            return;
-        }
-
-        try {
-            stock = Integer.parseInt(newStock.getText());
-            if (stock < 0) {
-                JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido y mayor que 0.");
+            
+            try {
+                stock = Integer.parseInt(newStock.getText());
+                if (stock < 0) {
+                    JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido y mayor que 0.");
+                    return;
+                }
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido.");
                 return;
             }
-        } catch (NumberFormatException nfe) {
-            JOptionPane.showMessageDialog(null, "Error: Debe ingresar un número entero válido.");
-            return;
-        }
-        
-        //Proveedor proveedor = gestor.buscarProveedor(nombreProveedor);
-        //Producto productoEditar = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
-        //boolean modificado = proveedor.modificarProductoSuministrado(nombreProducto, name, price, stock);
-        
-        if(proveedor.modificarProductoSuministrado(nombreProducto, name, price, stock)){
-            JOptionPane.showMessageDialog(null,"Producto modificado con éxito");
-        } 
-        else {
+            
+            String datos = "Nombre Proveedor : " + nombreProveedor + "\n "+ "Nombre Producto a Modificar : " + nombreProducto + "\n" + "Nuevo nombre Producto :" + name + "\n"+ "Precio :" + price + "\n"+ "Cantidad de Stock : " + stock ;             
+            jTextArea1.setText(datos);
+                 
+            
+            if(gestor.modificarProducto(nombreProveedor,nombreProducto, name, price, stock)) {
+                JOptionPane.showMessageDialog(null,"El producto fue modificado con éxito");
+            } else {
                 JOptionPane.showMessageDialog(null,"No se pudo modificar el producto.");
+            }
+            
+            
+            
+            
+            
+            
+        } catch (StockNegativoException ex) {
+            Logger.getLogger(VentanaModificarProducto.class.getName()).log(Level.SEVERE,null, ex);
         }
-        
-                
         
         
         
