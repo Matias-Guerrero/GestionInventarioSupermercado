@@ -3,6 +3,10 @@ package gestorsupermercadoinventario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 /**
  * Clase que representa un gestor para administrar proveedores y productos en un supermercado.
@@ -280,6 +284,57 @@ public class Gestor {
         }
 
         return informe;
+    }
+    
+    
+    public void generarInformeExcel() {
+        try {
+            // Crear un nuevo libro de Excel
+            WritableWorkbook workbook = Workbook.createWorkbook(new File("informe.xls"));
+
+            // Crear una hoja de Excel
+            WritableSheet sheet = workbook.createSheet("Informe", 0);
+
+            // Encabezados del informe
+            String[] headers = {"NombreProveedor", "CorreoElectronico", "NombreProducto", "CodigoBarra", "Precio", "CantidadStock", "TipoProveedor"};
+
+            // Crear la primera fila con encabezados
+            for (int i = 0; i < headers.length; i++) {
+                Label label = new Label(i, 0, headers[i]);
+                sheet.addCell(label);
+            }
+
+            // Iterar sobre los proveedores y sus productos
+            int rowNum = 1; // Comenzar desde la segunda fila
+            for (Object objProveedor : proveedores) {
+                if (objProveedor instanceof Proveedor) {
+                    Proveedor proveedor = (Proveedor) objProveedor;
+                    String tipoProveedor = proveedor instanceof ProveedorLocal ? "Local" : "Internacional";
+
+                    for (Producto producto : proveedor.getProductosSuministrados()) {
+                        // Agregar información a la fila
+                        sheet.addCell(new Label(0, rowNum, proveedor.getNombre()));
+                        sheet.addCell(new Label(1, rowNum, proveedor.getCorreoElectronico()));
+                        sheet.addCell(new Label(2, rowNum, producto.getNombre()));
+                        sheet.addCell(new Label(3, rowNum, producto.getCodigoBarra()));
+                        sheet.addCell(new jxl.write.Number(4, rowNum, producto.getPrecio()));
+                        sheet.addCell(new jxl.write.Number(5, rowNum, producto.getCantidadStock()));
+                        sheet.addCell(new Label(6, rowNum, tipoProveedor));
+
+                        rowNum++;
+                    }
+                }
+            }
+
+            // Escribir y cerrar el libro
+            workbook.write();
+            workbook.close();
+
+            System.out.println("Informe generado y guardado en informe.xls");
+        } catch (IOException | jxl.write.WriteException e) {
+            e.printStackTrace();
+            System.out.println("Error al guardar el informe en archivo Excel.");
+        }
     }
 
 }

@@ -311,6 +311,9 @@ public class GestorSupermercadoInventario {
                         System.out.println("Error al guardar el informe en archivo.");
                     }
                     
+                    // Generar planilla de calculo
+                    gestor.generarInformeExcel();
+                    
                     System.out.println("Saliendo...");
 
                     pausar();
