@@ -1,16 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gestorsupermercadoinventario.ventanas;
 
 import gestorsupermercadoinventario.Gestor;
 
-
+/**
+ * La clase `VentanaProveedor` representa la ventana que muestra las opciones relacionadas con el proveedor.
+ */
 public class VentanaProveedor extends javax.swing.JFrame {
     private Gestor gestor;
+    
     /**
-     * Creates new form VentanaProveedor
+     * El constructor de la clase `VentanaProveedor`.
+     *
+     * @param gestor El gestor que controla las operaciones del sistema.
      */
     public VentanaProveedor(Gestor gestor) {
         

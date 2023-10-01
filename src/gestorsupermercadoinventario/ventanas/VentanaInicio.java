@@ -1,16 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gestorsupermercadoinventario.ventanas;
 
 import gestorsupermercadoinventario.Gestor;
 
-
+/**
+ * La clase `VentanaInicio` representa la ventana de inicio de la aplicación.
+ * Esta ventana permite al usuario acceder a otras funciones del sistema.
+ */
 public class VentanaInicio extends javax.swing.JFrame {
     private Gestor gestor; 
+    
     /**
-     * Creates new form VentanaInicio
+     * El constructor de la clase `VentanaInicio`.
+     *
+     * @param gestor El gestor que controla las operaciones del sistema.
      */
     public VentanaInicio(Gestor gestor) {
         

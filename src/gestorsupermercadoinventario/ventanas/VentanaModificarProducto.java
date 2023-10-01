@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gestorsupermercadoinventario.ventanas;
 
 import gestorsupermercadoinventario.Gestor;
@@ -12,11 +8,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
+/**
+ * La clase `VentanaModificarProducto` representa la ventana para modificar un producto.
+ */
 public class VentanaModificarProducto extends javax.swing.JFrame {
     private Gestor gestor; 
+    
     /**
-     * Creates new form ModificarProducto
+     * El constructor de la clase `VentanaModificarProducto`.
+     *
+     * @param gestor El gestor que controla las operaciones del sistema.
      */
     public VentanaModificarProducto(Gestor gestor) {
         initComponents();

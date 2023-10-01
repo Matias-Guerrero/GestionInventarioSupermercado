@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gestorsupermercadoinventario.ventanas;
 
 import gestorsupermercadoinventario.Gestor;
@@ -9,11 +5,16 @@ import gestorsupermercadoinventario.Producto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-
+/**
+ * La clase `VentanaFiltrarProducto` representa la ventana para filtrar productos por stock.
+ */
 public class VentanaFiltrarProducto extends javax.swing.JFrame {
     private Gestor gestor;
+    
     /**
-     * Creates new form VentanaFiltrarProducto
+     * El constructor de la clase `VentanaFiltrarProducto`.
+     *
+     * @param gestor El gestor que controla las operaciones del sistema.
      */
     public VentanaFiltrarProducto(Gestor gestor) {
         initComponents();
