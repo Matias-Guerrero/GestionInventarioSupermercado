@@ -1,89 +1,176 @@
 @startuml
 
-class Producto {
-    -nombreProducto: String
-    -codigoBarra: String
-    -precio: double
-    -cantidadStock: int
-
-    +Producto(nombreProducto: String, precio: double, cantidadStock: int)
-    +getNombre(): String
-    +getCodigoBarra(): String
-    +getPrecio(): double
-    +getCantidadStock(): int
-    +setNombre(nombre: String): void
-    +setCodigoBarra(codigoBarra: String): void
-    +setPrecio(precio: double): void
-    +setCantidadStock(cantidadStock: int): void
-    +generarCodigoBarra(): String
-    +actualizarStock(nuevaCantidad: int): void
-    +actualizarStock(nuevaCantidad: int, aumentar: boolean): void
-    +modificarProducto(nombre: String, precio: double, cantidadStock: int): void
-    +obtenerInformacion(): String
-}
-
-class Proveedor {
-    -nombreProveedor: String
-    -correoElectronico: String
-    -productosSuministrados: ArrayList<Producto>
-
-    +Proveedor(nombreProveedor: String, correoElectronico: String)
-    +getNombre(): String
-    +getCorreoElectronico(): String
-    +getProductosSuministrados(): ArrayList<Producto>
-    +setNombre(nombre: String): void
-    +setCorreoElectronico(correoElectronico: String): void
-    +setProductosSuministrados(productosSuministrados: ArrayList<Producto>): void
-    +agregarProductoSuministrado(producto: Producto): boolean
-    +eliminarProductoSuministrado(nombreProducto: String): Producto
-    +buscarProductoSuministrado(nombreProducto: String): Producto
-    +buscarProductoSuministrado(nombreProducto: String, nombreProveedor: String): Producto
-    +mostrarProductosSuministrados(): void
-    +modificarProductoSuministrado(nombreProducto: String, nuevoNombre: String, nuevoPrecio: double, nuevaCantidadStock: int): boolean
-}
-
-class ProveedorLocal {
-    -region: String
-
-    +ProveedorLocal(nombreProveedor: String, correoElectronico: String, region: String)
-    +getRegion(): String
-    +setRegion(region: String): void
-    +mostrarProductosSuministrados(): void
-}
-
-class ProveedorInternacional {
-    -pais: String
-
-    +ProveedorInternacional(nombreProveedor: String, correoElectronico: String, pais: String)
-    +getPais(): String
-    +setPais(pais: String): void
-    +mostrarProductosSuministrados(): void
+class GestorSupermercadoInventario {
+  +main(String[] args)
 }
 
 class Gestor {
-    -proveedores: ArrayList<Proveedor>
-    -mapaProductos: HashMap<String, Producto>
-
-    +Gestor()
-    +agregarProductoAProveedor(nombreProveedor: String, producto: Producto): boolean
-    +eliminarProductoAProveedor(nombreProveedor: String, nombreProducto: String, cantidadEliminar: int): Producto
-    +buscarProveedor(nombreProveedor: String): Proveedor
-    +mostrarProductosSuministrados(nombreProveedor: String): void
-    +mostrarProductosStock(): void
-    +cargarDatosDesdeArchivo(nombreArchivo: String): void
-    +guardarDatosEnArchivo(nombreArchivo: String): void
-    +filtrarProductosPorStock(stockMinimo: int, stockMaximo: int): ArrayList<Producto>
-    +generarInformeCSV(): StringBuilder
+  -proveedores: ArrayList
+  -mapaProductos: HashMap<String, Producto>
+  +agregarProductoAProveedor(String, Producto): boolean
+  +eliminarProductoAProveedor(String, String): Producto
+  +buscarProveedor(String): Proveedor
+  +mostrarProductosSuministrados(String)
+  +modificarProducto(String, String, String, double, int): boolean
+  +mostrarProductosStock(): HashMap
+  +cargarDatosDesdeArchivo(String)
+  +guardarDatosEnArchivo(String)
+  +filtrarProductosPorStock(int, int): ArrayList<Producto>
+  +generarInformeCSV(): StringBuilder
+  +generarInformeExcel()
 }
 
-class GestorSupermercadoInventario {
-    +main(args: String[]): void
+class Proveedor {
+  -nombreProveedor: String
+  -correoElectronico: String
+  -productosSuministrados: ArrayList<Producto>
+  +getNombre(): String
+  +getCorreoElectronico(): String
+  +getProductosSuministrados(): ArrayList<Producto>
+  +setNombre(String)
+  +setCorreoElectronico(String)
+  +setProductosSuministrados(ArrayList<Producto>)
+  +agregarProductoSuministrado(Producto): boolean
+  +eliminarProductoSuministrado(String): Producto
+  +buscarProductoSuministrado(String): Producto
+  +mostrarProductosSuministrados()
+  +modificarProductoSuministrado(String, String, double, int): boolean
 }
 
-GestorSupermercadoInventario --> Gestor: contiene
-Gestor --> Proveedor: contiene
-Gestor --> Producto: contiene
+class ProveedorLocal {
+  -region: String
+  +getRegion(): String
+  +setRegion(String)
+}
+
+class ProveedorInternacional {
+  -pais: String
+  +getPais(): String
+  +setPais(String)
+}
+
+class Producto {
+  -nombreProducto: String
+  -precio: double
+  -cantidadStock: int
+  +getNombre(): String
+  +getPrecio(): double
+  +getCantidadStock(): int
+  +setNombre(String)
+  +setPrecio(double)
+  +setCantidadStock(int)
+  +modificarProducto(String, double, int)
+  +actualizarStock(int, boolean)
+}
+
+
+class VentanaInicio {
+    - Gestor gestor
+    + VentanaInicio(gestor: Gestor)
+    + btnMenuProveedorActionPerformed(evt: ActionEvent)
+    + exitActionPerformed(evt: ActionEvent)
+}
+
+class VentanaProveedor {
+    - Gestor gestor
+    + VentanaProveedor(gestor: Gestor)
+    + agregarProdActionPerformed(evt: ActionEvent)
+    + eliminarProdActionPerformed(evt: ActionEvent)
+    + buscarProdActionPerformed(evt: ActionEvent)
+    + listaProdActionPerformed(evt: ActionEvent)
+    + mostrarProActionPerformed(evt: ActionEvent)
+    + modificarProdActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+    + filtrarProdActionPerformed(evt: ActionEvent)
+}
+
+class VentanaAgregarProducto {
+    - Gestor gestor
+    + VentanaAgregarProducto(gestor: Gestor)
+    + TextProveedorActionPerformed(evt: ActionEvent)
+    + TextProductoActionPerformed(evt: ActionEvent)
+    + TextStockActionPerformed(evt: ActionEvent)
+    + TextPrecioActionPerformed(evt: ActionEvent)
+    + btnAgregarConfirmacionActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+}
+
+class VentanaEliminarProducto {
+    - Gestor gestor
+    + VentanaEliminarProducto(gestor: Gestor)
+    + textProductoActionPerformed(evt: ActionEvent)
+    + deleteActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+}
+
+class VentanaBuscarProducto {
+    - Gestor gestor
+    + VentanaBuscarProducto(gestor: Gestor)
+    + searchActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+}
+
+class VentanaListaProducto {
+    - Gestor gestor
+    + VentanaListaProducto(gestor: Gestor)
+    + enterActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+}
+
+class VentanaMostrarProducto {
+    - Gestor gestor
+    + VentanaMostrarProducto(gestor: Gestor)
+    + backToMenuActionPerformed(evt: ActionEvent)
+    + mostrarActionPerformed(evt: ActionEvent)
+}
+
+class VentanaModificarProducto {
+    - Gestor gestor
+    + VentanaModificarProducto(gestor: Gestor)
+    + modificarActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+}
+
+class VentanaFiltrarProducto {
+    - Gestor gestor
+    + VentanaFiltrarProducto(gestor: Gestor)
+    + filtrarProdActionPerformed(evt: ActionEvent)
+    + backToMenuActionPerformed(evt: ActionEvent)
+}
+
+class StockNegativoException {
+    <<exception>>
+    + StockNegativoException(mensaje: String)
+    + getMessage(): String
+}
+
+class PrecioNegativoException {
+    <<exception>>
+    + PrecioNegativoException(mensaje: String)
+    + getMessage(): String
+}
+
+GestorSupermercadoInventario --> Gestor
+Gestor "1" o-- "0..*" Proveedor
+Gestor "1" o-- "0..*" Producto
+Proveedor "1" o-- "1..*" Producto
 Proveedor <|-- ProveedorLocal
 Proveedor <|-- ProveedorInternacional
+
+Gestor --> VentanaInicio
+VentanaInicio --> VentanaProveedor : Abre
+VentanaProveedor --> VentanaAgregarProducto : Abre
+VentanaProveedor --> VentanaEliminarProducto : Abre
+VentanaProveedor --> VentanaBuscarProducto : Abre
+VentanaProveedor --> VentanaListaProducto : Abre
+VentanaProveedor --> VentanaMostrarProducto : Abre
+VentanaProveedor --> VentanaModificarProducto : Abre
+VentanaProveedor --> VentanaFiltrarProducto : Abre
+
+Gestor -- StockNegativoException : <<throws>>
+Gestor -- PrecioNegativoException : <<throws>>
+
+Producto -- StockNegativoException : <<throws>>
+Producto -- PrecioNegativoException : <<throws>>
 
 @enduml
