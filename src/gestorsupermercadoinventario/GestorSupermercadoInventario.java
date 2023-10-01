@@ -1,5 +1,8 @@
 package gestorsupermercadoinventario;
 
+import gestorsupermercadoinventario.excepciones.StockNegativoException;
+import gestorsupermercadoinventario.excepciones.PrecioNegativoException;
+import gestorsupermercadoinventario.ventanas.VentanaInicio;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -124,20 +127,10 @@ public class GestorSupermercadoInventario {
                     // Se verifica cuanto stock tiene el producto en el proveedor
                     Proveedor proveedor = gestor.buscarProveedor(nombreProveedor);
                     Producto productoExistente = proveedor.buscarProductoSuministrado(nombreProducto);
-                    int stockActual = productoExistente.getCantidadStock();
-
-                    // Se solicita la cantidad a eliminar dependiendo del stock actual
-                    System.out.println("Ingrese la cantidad a eliminar (Stock actual: " + stockActual + "): ");
-                    int cantidadEliminar = Integer.parseInt(lector.readLine());
-
-                    // Se verifica que la cantidad a eliminar no sea mayor al stock actual
-                    if (cantidadEliminar > stockActual) {
-                        System.out.println("La cantidad a eliminar no puede ser mayor al stock actual.");
-                        break;
-                    }
+               
 
                     // Se elimina el producto del proveedor
-                    Producto productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto, cantidadEliminar);
+                    Producto productoEliminado = gestor.eliminarProductoAProveedor(nombreProveedor, nombreProducto);
 
                     // Se verifica si el producto fue eliminado
                     if (productoEliminado != null) {

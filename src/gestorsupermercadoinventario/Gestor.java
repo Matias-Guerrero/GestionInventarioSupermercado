@@ -1,12 +1,12 @@
 package gestorsupermercadoinventario;
 
+import gestorsupermercadoinventario.excepciones.StockNegativoException;
+import gestorsupermercadoinventario.excepciones.PrecioNegativoException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
-import jxl.Workbook;
-import jxl.write.Label;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase que representa un gestor para administrar proveedores y productos en un supermercado.
@@ -68,20 +68,28 @@ public class Gestor {
      * @param cantidadEliminar Cantidad del producto a eliminar.
      * @return Producto eliminado o null si no se encuentra.
      */
-    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto, int cantidadEliminar) throws StockNegativoException{
+    
+    public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto) {//throws StockNegativoException{
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
-        
+        int cantidadEliminada;
+
         if (proveedor != null) {
             Producto producto = proveedor.buscarProductoSuministrado(nombreProducto, nombreProveedor);
-            
+
+            cantidadEliminada = producto.getCantidadStock();
+
             if (producto != null) {
                 proveedor.eliminarProductoSuministrado(nombreProducto);
 
                 // Se obtiene el producto del HashMap y se actualiza su cantidad en stock
                 Producto productoExistente = this.mapaProductos.get(producto.getNombre());
-                productoExistente.actualizarStock(cantidadEliminar, false);
+                try {
+                    productoExistente.actualizarStock(cantidadEliminada, false);
+                } catch (StockNegativoException ex) {
+                    Logger.getLogger(Gestor.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-                // Si el producto se queda sin stock, se elimina del HashMap
+                //Si el producto se queda sin stock, se elimina del HashMap
                 if (productoExistente.getCantidadStock() == 0) {
                     this.mapaProductos.remove(producto.getNombre());
                 }
@@ -89,9 +97,11 @@ public class Gestor {
                 return producto;
             }
         }
-        
+
         return null;
     }
+
+    
     
     /**
      * Busca un proveedor por nombre.
@@ -130,7 +140,7 @@ public class Gestor {
     /**
      * Muestra la lista de productos y su stock.
      */
-    public void mostrarProductosStock() {
+    /*public void mostrarProductosStock() {
         System.out.println("Listado de Productos en Stock");
         System.out.println("=============================");
 
@@ -141,7 +151,43 @@ public class Gestor {
         for (Producto producto : this.mapaProductos.values()) {
             System.out.printf("%-20s %-20s %-20s %-20s\n", producto.getNombre(), producto.getCodigoBarra(), producto.getPrecio(), producto.getCantidadStock());
         }
+    }*/
+    
+    // Método para modificar un producto y actualizar el HashMap
+    public boolean modificarProducto(String nombreProveedor, String nombreProducto, String nuevoNombre, double nuevoPrecio, int nuevaCantidadStock) throws StockNegativoException {
+        // Obtener el proveedor por nombre
+        Proveedor proveedor = buscarProveedor(nombreProveedor);
+        Producto productoProveedor = proveedor.buscarProductoSuministrado(nombreProducto);
+
+        if (proveedor != null && productoProveedor != null) {
+            Producto productoMapa = mapaProductos.get(nombreProducto);
+
+            if(productoMapa.getCantidadStock() ==  productoProveedor.getCantidadStock()) {
+                Producto remove = mapaProductos.remove(nombreProducto);
+            }
+            else{
+                productoMapa.actualizarStock(productoProveedor.getCantidadStock(), false);
+            }
+
+            // Llamar al método modificarProducto en la clase Proveedor
+            boolean modificado = proveedor.modificarProductoSuministrado(nombreProducto, nuevoNombre, nuevoPrecio, nuevaCantidadStock);
+
+            if (modificado) {
+                // Actualizar el HashMap
+                Producto productoModificado = proveedor.buscarProductoSuministrado(nuevoNombre);
+                mapaProductos.put(productoModificado.getCodigoBarra(), productoModificado);
+
+                return true;
+            }
+        }
+
+        return false;
     }
+
+    public HashMap mostrarProductosStock() {
+        return this.mapaProductos;
+    }
+    
     
     /**
      * Carga datos desde un archivo en el formato especificado.
@@ -284,57 +330,6 @@ public class Gestor {
         }
 
         return informe;
-    }
-    
-    
-    public void generarInformeExcel() {
-        try {
-            // Crear un nuevo libro de Excel
-            WritableWorkbook workbook = Workbook.createWorkbook(new File("informe.xls"));
-
-            // Crear una hoja de Excel
-            WritableSheet sheet = workbook.createSheet("Informe", 0);
-
-            // Encabezados del informe
-            String[] headers = {"NombreProveedor", "CorreoElectronico", "NombreProducto", "CodigoBarra", "Precio", "CantidadStock", "TipoProveedor"};
-
-            // Crear la primera fila con encabezados
-            for (int i = 0; i < headers.length; i++) {
-                Label label = new Label(i, 0, headers[i]);
-                sheet.addCell(label);
-            }
-
-            // Iterar sobre los proveedores y sus productos
-            int rowNum = 1; // Comenzar desde la segunda fila
-            for (Object objProveedor : proveedores) {
-                if (objProveedor instanceof Proveedor) {
-                    Proveedor proveedor = (Proveedor) objProveedor;
-                    String tipoProveedor = proveedor instanceof ProveedorLocal ? "Local" : "Internacional";
-
-                    for (Producto producto : proveedor.getProductosSuministrados()) {
-                        // Agregar información a la fila
-                        sheet.addCell(new Label(0, rowNum, proveedor.getNombre()));
-                        sheet.addCell(new Label(1, rowNum, proveedor.getCorreoElectronico()));
-                        sheet.addCell(new Label(2, rowNum, producto.getNombre()));
-                        sheet.addCell(new Label(3, rowNum, producto.getCodigoBarra()));
-                        sheet.addCell(new jxl.write.Number(4, rowNum, producto.getPrecio()));
-                        sheet.addCell(new jxl.write.Number(5, rowNum, producto.getCantidadStock()));
-                        sheet.addCell(new Label(6, rowNum, tipoProveedor));
-
-                        rowNum++;
-                    }
-                }
-            }
-
-            // Escribir y cerrar el libro
-            workbook.write();
-            workbook.close();
-
-            System.out.println("Informe generado y guardado en informe.xls");
-        } catch (IOException | jxl.write.WriteException e) {
-            e.printStackTrace();
-            System.out.println("Error al guardar el informe en archivo Excel.");
-        }
     }
 
 }
