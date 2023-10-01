@@ -8,10 +8,8 @@ import gestorsupermercadoinventario.Producto;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-/**
- *
- * @author samirabecerra
- */
+
+
 public class VentanaEliminarProducto extends javax.swing.JFrame {
     private Gestor gestor; 
     /**

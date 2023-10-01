@@ -9,10 +9,7 @@ import gestorsupermercadoinventario.Producto;
 import gestorsupermercadoinventario.Proveedor;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author samirabecerra
- */
+
 public class VentanaListaProducto extends javax.swing.JFrame {
     private Gestor gestor;
     /**

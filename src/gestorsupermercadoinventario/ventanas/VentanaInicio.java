@@ -6,10 +6,7 @@ package gestorsupermercadoinventario.ventanas;
 
 import gestorsupermercadoinventario.Gestor;
 
-/**
- *
- * @author mati1
- */
+
 public class VentanaInicio extends javax.swing.JFrame {
     private Gestor gestor; 
     /**

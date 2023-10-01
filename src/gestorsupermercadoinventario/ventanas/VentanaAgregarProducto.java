@@ -12,10 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author samirabecerra
- */
+
 public class VentanaAgregarProducto extends javax.swing.JFrame {
     private Gestor gestor;
     /**

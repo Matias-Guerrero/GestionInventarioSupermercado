@@ -35,6 +35,8 @@ public class Gestor {
      * @param nombreProveedor Nombre del proveedor.
      * @param producto        Producto a agregar.
      * @return True si se agrega con éxito, False en caso contrario.
+     * @throws StockNegativoException Si el stock resulta en un valor negativo después de la operación.
+     * @throws PrecioNegativoException Si el precio del producto es negativo.
      */
     public boolean agregarProductoAProveedor(String nombreProveedor, Producto producto) throws StockNegativoException, PrecioNegativoException {
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);
@@ -65,13 +67,12 @@ public class Gestor {
     }
     
     /**
-     * Elimina un producto de un proveedor.
-     *
-     * @param nombreProveedor  Nombre del proveedor.
-     * @param nombreProducto   Nombre del producto a eliminar.
-     * @param cantidadEliminar Cantidad del producto a eliminar.
-     * @return Producto eliminado o null si no se encuentra.
-     */
+    * Elimina un producto de un proveedor.
+    *
+    * @param nombreProveedor  Nombre del proveedor.
+    * @param nombreProducto   Nombre del producto a eliminar.
+    * @return Producto eliminado o null si no se encuentra.
+    */
     
     public Producto eliminarProductoAProveedor(String nombreProveedor, String nombreProducto) {//throws StockNegativoException{
         Proveedor proveedor = this.buscarProveedor(nombreProveedor);

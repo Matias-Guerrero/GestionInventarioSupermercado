@@ -10,10 +10,7 @@ import java.util.ArrayList;
 //import java.util.List;
 import java.util.HashMap; 
 
-/**
- *
- * @author samirabecerra
- */
+
 public class VentanaMostrarProducto extends javax.swing.JFrame {
     private Gestor gestor;
     /**
