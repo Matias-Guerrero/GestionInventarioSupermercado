@@ -124,7 +124,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+    * Este método se llama cuando se hace clic en el botón "Agregar Producto a Proveedor".
+    * Crea una nueva instancia de la ventana de agregar producto, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void agregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProdActionPerformed
         // TODO add your handling code here:
         VentanaAgregarProducto aProd = new VentanaAgregarProducto(this.gestor);
@@ -132,7 +138,14 @@ public class VentanaProveedor extends javax.swing.JFrame {
         aProd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_agregarProdActionPerformed
-
+    
+    /**
+    * Este método se llama cuando se hace clic en el botón "Eliminar Producto".
+    * Crea una nueva instancia de la ventana de eliminar producto, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void eliminarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProdActionPerformed
         // TODO add your handling code here:
         VentanaEliminarProducto eProd = new VentanaEliminarProducto(this.gestor); 
@@ -141,6 +154,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_eliminarProdActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Buscar Producto".
+    * Crea una nueva instancia de la ventana de búsqueda de producto, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void buscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProdActionPerformed
         // TODO add your handling code here:
         VentanaBuscarProducto bProd = new VentanaBuscarProducto(this.gestor); 
@@ -149,6 +169,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_buscarProdActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Lista de Productos".
+    * Crea una nueva instancia de la ventana de lista de productos, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void listaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProdActionPerformed
         // TODO add your handling code here:
         VentanaListaProducto lProd = new VentanaListaProducto(this.gestor); 
@@ -156,7 +183,14 @@ public class VentanaProveedor extends javax.swing.JFrame {
         lProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_listaProdActionPerformed
-
+    
+    /**
+    * Este método se llama cuando se hace clic en el botón "Mostrar Producto".
+    * Crea una nueva instancia de la ventana de mostrar producto, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void mostrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProActionPerformed
         // TODO add your handling code here:
         VentanaMostrarProducto mProd = new VentanaMostrarProducto(this.gestor); 
@@ -164,7 +198,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
         mProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_mostrarProActionPerformed
-
+    /**
+    * Este método se llama cuando se hace clic en el botón "Modificar Producto a Proveedor ".
+    * Crea una nueva instancia de la ventana de modificar producto, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void modificarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProdActionPerformed
         // TODO add your handling code here:
         VentanaModificarProducto modProd = new VentanaModificarProducto(this.gestor); 
@@ -173,6 +213,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_modificarProdActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Volver a Inicio".
+    * Crea una nueva instancia de la ventana de inicio, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         
@@ -182,7 +229,13 @@ public class VentanaProveedor extends javax.swing.JFrame {
         this.dispose();
         
     }//GEN-LAST:event_backToMenuActionPerformed
-
+    /**
+    * Este método se llama cuando se hace clic en el botón "Filtrar Producto por Cantidad de Stock".
+    * Crea una nueva instancia de la ventana de filtrar producto, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void filtrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarProdActionPerformed
         // TODO add your handling code here:
         VentanaFiltrarProducto filtrarProd = new VentanaFiltrarProducto(this.gestor); 

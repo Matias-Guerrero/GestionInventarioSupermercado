@@ -66,14 +66,28 @@ public class VentanaInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Menú Proveedor".
+    * Crea una nueva instancia de la ventana del menú de proveedores, la ajusta al tamaño de su contenido,
+    * la centra en la pantalla, la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void btnMenuProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProveedorActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newVproveedor = new VentanaProveedor(this.gestor);
+        newVproveedor.pack(); 
         newVproveedor.setLocationRelativeTo(null);
         newVproveedor.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuProveedorActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Salir".
+    * Cierra la aplicación completa al invocar el método System.exit(0).
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
         // TODO add your handling code here:
         // Cerrar la aplicación completa

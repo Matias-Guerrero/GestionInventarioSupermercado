@@ -191,23 +191,37 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
     private void TextPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextPrecioActionPerformed
-
+    
+    /**
+    * Este método se llama cuando se hace clic en el botón "Agregar".
+    * Valida los datos ingresados, crea un producto y lo agrega al proveedor correspondiente.
+    * Muestra un mensaje de confirmación o error.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void btnAgregarConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarConfirmacionActionPerformed
         // TODO add your handling code here:
         
+        //Obtener el nombre del proveedor desde el campo de texto de la ventana generada
         String nombreProveedor = TextProveedor.getText();
+        
+        //Obtener el nombre del producto desde el campo de texto de la ventana generada
         String nombreProducto = TextProducto.getText();
+        
+        //Inicializar variables para precio y cantidad de stock
         double precio = 0.0;
         int cantidadStock = 0;
+         
         boolean datosValidos = false;
 
         
-
+        //Validar el nombre del proveedor 
         if (nombreProveedor == null || (!nombreProveedor.equals("Proveedor A") && !nombreProveedor.equals("Proveedor B") && !nombreProveedor.equals("Proveedor C"))) {
             JOptionPane.showMessageDialog(null, "Error: El proveedor debe ser 'Proveedor A', 'Proveedor B' o 'Proveedor C'.");
             return; // Sale del método si ocurre un error
         }
-
+        
+        //Valida el nombre del producto 
         if (nombreProducto == null || nombreProducto.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error: Debe ingresar un nombre de producto válido.");
             return; // Sale del método si ocurre un error
@@ -237,7 +251,7 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
 
         datosValidos = true;
         
-
+        
         Producto producto = null;
         try {
             producto = new Producto(nombreProducto, precio, cantidadStock);
@@ -253,6 +267,7 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null,datos);
         jTextArea1.setText(datos);
         
+        //Si los datos son válidos, se intenta agregar el producto 
         if (datosValidos) {
         // Agregar el producto al gestor (debes implementar este método en tu Gestor)
         boolean exito = false;
@@ -274,8 +289,16 @@ public class VentanaAgregarProducto extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAgregarConfirmacionActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Volver a Menú".
+    * Cierra la ventana actual y muestra la ventana del menú de proveedores.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
+        
+        //Se crea una nueva instancia de la ventana del menú de proveedor 
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor);
         newMenu.setLocationRelativeTo(null);
         newMenu.setVisible(true);

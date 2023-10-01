@@ -89,6 +89,13 @@ public class VentanaBuscarProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "buscar".
+    * Realiza una búsqueda de un producto suministrado por un proveedor en función de los datos ingresados por el usuario.
+    * Muestra los resultados de la búsqueda en un cuadro de diálogo y en un área de texto.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
         String nombreProveedor = textProveedor.getText();
@@ -130,7 +137,14 @@ public class VentanaBuscarProducto extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_searchActionPerformed
-
+    
+    /**
+    * Este método se llama cuando se hace clic en el botón "Volver a Menú".
+    * Crea una nueva instancia de la ventana del menú de proveedores, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 

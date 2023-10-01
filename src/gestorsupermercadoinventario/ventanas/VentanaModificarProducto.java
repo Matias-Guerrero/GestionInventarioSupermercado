@@ -171,7 +171,14 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+    * Este método se llama cuando se hace clic en el botón "modificar".
+    * Realiza la modificación de un producto suministrado por un proveedor, actualizando su nombre,
+    * precio y cantidad de stock en función de los valores ingresados por el usuario.
+    * Muestra la información modificada y un mensaje de éxito o error en un área de texto.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         try {                                     
             jTextArea1.setText(""); 
@@ -232,22 +239,19 @@ public class VentanaModificarProducto extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"No se pudo modificar el producto.");
             }
             
-            
-            
-            
-            
-            
         } catch (StockNegativoException ex) {
             Logger.getLogger(VentanaModificarProducto.class.getName()).log(Level.SEVERE,null, ex);
         }
-        
-        
-        
-        
-        
-        
+     
     }//GEN-LAST:event_modificarActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Volver a Inicio".
+    * Crea una nueva instancia de la ventana del menú de proveedores, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 

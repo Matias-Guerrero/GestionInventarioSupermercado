@@ -108,7 +108,13 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+    * Este método se llama cuando se hace clic en el botón "Volver a Inicio".
+    * Crea una nueva instancia de la ventana del menú de proveedores, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 
@@ -117,6 +123,13 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_backToMenuActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "mostrar".
+    * Obtiene una lista de productos en stock desde el gestor y muestra la información
+    * de estos productos en un área de texto.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void mostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarActionPerformed
         // TODO add your handling code here:
         
@@ -139,13 +152,7 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
                 jTextArea1.append(String.format("%-20s %-20s %-20s %-20s\n", producto.getNombre(), producto.getCodigoBarra(), producto.getPrecio(), producto.getCantidadStock()));
             }
         }
-        
-        
-        
-        // Actualizar el JTextArea para mostrar la información de los productos
-        //jTextArea1.setText(productosText.toString());
-
-        //gestor.mostrarProductosStock();
+       
     }//GEN-LAST:event_mostrarActionPerformed
 
     /**

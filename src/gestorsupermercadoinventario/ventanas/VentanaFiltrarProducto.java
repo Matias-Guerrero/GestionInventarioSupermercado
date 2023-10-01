@@ -134,6 +134,13 @@ public class VentanaFiltrarProducto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Filtrar".
+    * Realiza una filtración de productos por stock en función de los valores ingresados por el usuario.
+    * Muestra los productos que cumplen con el rango de stock en un cuadro de diálogo y en un área de texto.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void filtrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarProdActionPerformed
         // TODO add your handling code here:
         int cantMaxStock;
@@ -181,16 +188,18 @@ public class VentanaFiltrarProducto extends javax.swing.JFrame {
             // Actualizar el JTextArea con la información acumulada
             jTextArea1.setText(productosText.toString());
             
-            //for(Producto productoActual: productosFiltrados){
-                
-                //JOptionPane.showMessageDialog(null,productoActual.obtenerInformacion());
-                //jTextArea1.setText(productoActual.obtenerInformacion());
-                
-            //}
+            
         }
         
     }//GEN-LAST:event_filtrarProdActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "volver a Menú".
+    * Crea una nueva instancia de la ventana del menú de proveedores, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 

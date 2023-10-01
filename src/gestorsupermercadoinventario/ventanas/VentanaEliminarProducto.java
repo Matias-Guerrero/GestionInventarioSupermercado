@@ -144,6 +144,13 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textProductoActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "eliminar".
+    * Valida los datos ingresados, muestra una confirmación al usuario
+    * y elimina el producto del proveedor correspondiente si los datos son válidos.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
         String nombreProveedor = textProveedor.getText();
@@ -183,6 +190,13 @@ public class VentanaEliminarProducto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_deleteActionPerformed
 
+    /**
+    * Este método se llama cuando se hace clic en el botón "Volver a Menú".
+    * Crea una nueva instancia de la ventana del menú de proveedores, la centra en la pantalla,
+    * la muestra y cierra la ventana actual.
+    *
+    * @param evt El evento de acción que desencadena este método.
+    */
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor);
