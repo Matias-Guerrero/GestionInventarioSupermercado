@@ -1,13 +1,13 @@
 NombreProveedor,CorreoElectronico,NombreProducto,CodigoBarra,Precio,CantidadStock,TipoProveedor
-Proveedor A,proveedora@example.com,Manzanas,9063176419517,2000.0,100,Local
-Proveedor A,proveedora@example.com,Platanos,5006064676821,1800.0,150,Local
-Proveedor B,proveedorb@example.com,Platanos,8678548440309,1800.0,150,Internacional
-Proveedor B,proveedorb@example.com,Naranjas,0673542533339,3000.0,100,Internacional
-Proveedor B,proveedorb@example.com,Leche,8874443279771,1000.0,100,Internacional
-Proveedor C,proveedorc@example.com,Leche,0048897255686,1000.0,300,Local
-Proveedor C,proveedorc@example.com,Huevos,8099698158165,2200.0,250,Local
-Proveedor C,proveedorc@example.com,Pan,2414493699739,1500.0,200,Local
-Proveedor C,proveedorc@example.com,Arroz,4212765800808,2000.0,400,Local
-Proveedor C,proveedorc@example.com,Fideos,3492603989626,1800.0,350,Local
-Proveedor C,proveedorc@example.com,Gomitas,4091957348748,500.0,1000,Local
+Proveedor A,proveedora@example.com,Manzanas,4808521384041,2000.0,100,Local
+Proveedor A,proveedora@example.com,Platanos,0303660436592,1800.0,150,Local
+Proveedor B,proveedorb@example.com,Platanos,5033021707652,1800.0,150,Internacional
+Proveedor B,proveedorb@example.com,Naranjas,0915738135223,3000.0,100,Internacional
+Proveedor B,proveedorb@example.com,Leche,3833259971625,1000.0,100,Internacional
+Proveedor C,proveedorc@example.com,Leche,1497695420134,1000.0,300,Local
+Proveedor C,proveedorc@example.com,Huevos,6602942569447,2200.0,250,Local
+Proveedor C,proveedorc@example.com,Pan,5057075854047,1500.0,200,Local
+Proveedor C,proveedorc@example.com,Arroz,1278305365946,2000.0,400,Local
+Proveedor C,proveedorc@example.com,Fideos,9629890686213,1800.0,350,Local
+Proveedor C,proveedorc@example.com,Gomitas,1955438690242,500.0,1000,Local
 
