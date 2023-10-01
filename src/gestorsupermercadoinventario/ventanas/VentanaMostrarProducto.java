@@ -112,6 +112,7 @@ public class VentanaMostrarProducto extends javax.swing.JFrame {
     private void backToMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMenuActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newMenu = new VentanaProveedor(this.gestor); 
+        newMenu.setLocationRelativeTo(null);
         newMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backToMenuActionPerformed

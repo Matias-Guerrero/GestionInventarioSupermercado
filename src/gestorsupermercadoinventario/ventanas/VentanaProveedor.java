@@ -128,6 +128,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void agregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarProdActionPerformed
         // TODO add your handling code here:
         VentanaAgregarProducto aProd = new VentanaAgregarProducto(this.gestor);
+        aProd.setLocationRelativeTo(null);
         aProd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_agregarProdActionPerformed
@@ -135,6 +136,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void eliminarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProdActionPerformed
         // TODO add your handling code here:
         VentanaEliminarProducto eProd = new VentanaEliminarProducto(this.gestor); 
+        eProd.setLocationRelativeTo(null);
         eProd.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_eliminarProdActionPerformed
@@ -142,6 +144,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void buscarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProdActionPerformed
         // TODO add your handling code here:
         VentanaBuscarProducto bProd = new VentanaBuscarProducto(this.gestor); 
+        bProd.setLocationRelativeTo(null);
         bProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_buscarProdActionPerformed
@@ -149,6 +152,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void listaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProdActionPerformed
         // TODO add your handling code here:
         VentanaListaProducto lProd = new VentanaListaProducto(this.gestor); 
+        lProd.setLocationRelativeTo(null);
         lProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_listaProdActionPerformed
@@ -156,6 +160,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void mostrarProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarProActionPerformed
         // TODO add your handling code here:
         VentanaMostrarProducto mProd = new VentanaMostrarProducto(this.gestor); 
+        mProd.setLocationRelativeTo(null);
         mProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_mostrarProActionPerformed
@@ -163,6 +168,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void modificarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarProdActionPerformed
         // TODO add your handling code here:
         VentanaModificarProducto modProd = new VentanaModificarProducto(this.gestor); 
+        modProd.setLocationRelativeTo(null);
         modProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_modificarProdActionPerformed
@@ -171,6 +177,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         VentanaInicio newVinicio = new VentanaInicio(this.gestor); 
+        newVinicio.setLocationRelativeTo(null);
         newVinicio.setVisible(true);
         this.dispose();
         
@@ -179,6 +186,7 @@ public class VentanaProveedor extends javax.swing.JFrame {
     private void filtrarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarProdActionPerformed
         // TODO add your handling code here:
         VentanaFiltrarProducto filtrarProd = new VentanaFiltrarProducto(this.gestor); 
+        filtrarProd.setLocationRelativeTo(null);
         filtrarProd.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_filtrarProdActionPerformed

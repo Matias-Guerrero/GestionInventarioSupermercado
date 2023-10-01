@@ -69,6 +69,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void btnMenuProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuProveedorActionPerformed
         // TODO add your handling code here:
         VentanaProveedor newVproveedor = new VentanaProveedor(this.gestor);
+        newVproveedor.setLocationRelativeTo(null);
         newVproveedor.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuProveedorActionPerformed

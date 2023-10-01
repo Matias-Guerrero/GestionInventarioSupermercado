@@ -27,6 +27,7 @@ public class GestorSupermercadoInventario {
         gestor.cargarDatosDesdeArchivo("datos.txt");
         
         VentanaInicio ventana = new VentanaInicio(gestor);
+        ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
     }
 }
