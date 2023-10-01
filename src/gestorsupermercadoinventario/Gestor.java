@@ -308,6 +308,11 @@ public class Gestor {
         return productosFiltrados;
     }
     
+    /**
+    * Genera un informe en formato CSV con la información de los proveedores y sus productos.
+    *
+    * @return Un objeto StringBuilder que contiene el informe en formato CSV.
+    */
     public StringBuilder generarInformeCSV() {
         StringBuilder informe = new StringBuilder();
 
@@ -335,6 +340,13 @@ public class Gestor {
 
         return informe;
     }
+    
+    /**
+    * Genera un informe en formato Excel (XLS) con la información de los proveedores y sus productos.
+    * Los datos se organizan en una hoja de Excel con encabezados que incluyen el nombre del proveedor, 
+    * correo electrónico, nombre del producto, código de barras, precio, cantidad en stock y tipo de proveedor.
+    * El informe se guarda en un archivo llamado "informe.xls".
+    */
     
     public void generarInformeExcel() {
         try {
