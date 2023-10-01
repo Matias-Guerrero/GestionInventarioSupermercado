@@ -1,5 +1,8 @@
 package gestorsupermercadoinventario;
 
+import gestorsupermercadoinventario.excepciones.StockNegativoException;
+import gestorsupermercadoinventario.excepciones.PrecioNegativoException;
+
 /**
  * Clase que representa un producto en el inventario de un supermercado.
  */

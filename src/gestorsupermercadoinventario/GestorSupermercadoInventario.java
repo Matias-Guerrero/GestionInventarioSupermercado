@@ -1,5 +1,8 @@
 package gestorsupermercadoinventario;
 
+import gestorsupermercadoinventario.excepciones.StockNegativoException;
+import gestorsupermercadoinventario.excepciones.PrecioNegativoException;
+import gestorsupermercadoinventario.ventanas.VentanaInicio;
 import java.io.*;
 import java.util.ArrayList;
 
