@@ -1,6 +1,7 @@
 Proveedor A,proveedora@example.com,Local,Local
 Manzanas,2000.0,100
 Platanos,1800.0,150
+Naranjas,1000.0,100
 Proveedor B,proveedorb@example.com,Internacional,Internacional
 Platanos,1800.0,150
 Naranjas,3000.0,100
@@ -12,3 +13,4 @@ Pan,1500.0,200
 Arroz,2000.0,400
 Fideos,1800.0,350
 Gomitas,500.0,1000
+Promo de Pisco,10000.0,100
