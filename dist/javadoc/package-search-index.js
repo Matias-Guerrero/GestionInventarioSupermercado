@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"gestorsupermercadoinventario"},{"l":"gestorsupermercadoinventario.excepciones"},{"l":"gestorsupermercadoinventario.ventanas"}];updateSearchResults();
